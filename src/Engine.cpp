@@ -6,6 +6,8 @@ Engine::Engine() {
     resolution = Vector2f(800,600);
     window.create(VideoMode(resolution.x, resolution.y), "Shit Game", Style::Default);
     window.setFramerateLimit(FPS);
+
+    newSnake();
 }
 
 void Engine::run() {
@@ -18,7 +20,10 @@ void Engine::run() {
 
 void Engine::draw() {
     window.clear(Color::Black);
-
+    // Draw all snake sections
+    for (auto & s : snake){
+        window.draw(s.getShape());
+    }
     window.display();
 }
 
@@ -35,4 +40,16 @@ void Engine::input() {
             window.close();
         }
     }
+}
+
+void Engine::newSnake() {
+    snake.clear();
+    snake.emplace_back(Vector2f(100,100));
+    snake.emplace_back(Vector2f(80,100));
+    snake.emplace_back(Vector2f(60,100));
+}
+
+void Engine::addSnakeSection() {
+    Vector2f newSectionPosition = snake.back().getPosition();
+    snake.emplace_back(newSectionPosition);
 }
