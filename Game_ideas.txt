@@ -1,0 +1,106 @@
+Class faction based game (card game?) based on different forms/aesthetics of supernatural:
+	Fey      / Undead
+	Demonic  / Celestial
+	Eldritch / Tech
+
+Bosses that exist as parts of the world, causeing regular effects that can be exploited (e.g. the grub from Core Keeper)
+
+Generation Zero but better and with the gunplay of Hunt Showdown (the weakpoint/parts system could be so much more interesting/well done)
+
+Lobotomy Corp / SCP abnormality game but you have to go out and retrive the abnos + cross abno testing
+
+A cult based game that does better than Ruinarch and Cult of The Lamb
+
+Darkest Dungeon but you're climbing a mountain from a basecamp
+
+Character focused turn based game where their backstories change timelines (and so they change classes/subclasses)
+
+Carrion but better
+
+Terraria but Space Engineers (maybe take some pointers from Cosmoteers)
+
+Stickman hitman torture scene/"giving a subject stimuli" type games + SCP/Lob Corp
+
+Open world action game with Absolver type combat
+	A) Preset "stances" you can swap between for each given weapon, eg longswords have close quarters/hallway thrusts and small cuts stance, long sweeping custs stance, and Mordschlag (murder strike) half sword stance to act as a mace/hammer.
+	B) Custom "combos" where you string together your own order of attack, different weapons have different move lists (with overlap), and you learn more attacks as you play.
+
+Co-op colony sim where you have to fend of nightly hordes (ala The Last Spell)
+Sphere of influence for nightly raids so players have to spread out to command the whole colony
+
+Elden Ring/Dark Souls + Distorion/E.G.O. (Library of Ruina)
+"Questlines" (in the souls-like sense) could include NPCs distorting over the course of them untill they form E.G.O. or become a full Distortion. 
+(Questline idea inspired by Phillip; NPC is the only survivor twice of an expidition party, and is so overcome with dispair they maifest their E.G.O. as wings (maybe call it "Hervör alvitr" or maybe "Victim of Sanngriðr") and then after it flees at the end of the fight you find them later and they they fully distory into a crow/dove Distorion (lets call it "Omen" after the NPC's feeling of responsibility for their party's deaths). Maybe if you don't kill Omen there could be a realm akin to Hollow Knight's Dream Realm where you can fight the NPC as what they could have been/what they believe they are/their fully realized self, and the questline's reward would be the fully realized E.G.O. (let's call it something like "Wake for the Einherjar").)
+
+Darkest Dungeon stress system + Library of Ruina E.G.O. / Distortion
+
+Faith attribute chart depicting what beliefs you're faithful to, with a herasay stat that lets you be faithful to more conflicting beliefs/more beliefs at once
+
+Bioshock infinite but not shit
+
+Monster Hunter but on boats, taking down leviathans.
+Either boat-locked, where each player is a boat. Or boat AND character with 3rd person combat.
+Add Shadow Of The Collossus mechanics if the leviathans are particularly large.
+
+Terraria but Wall World
+
+A boss-rush game like Titan Souls where you fight the Roman gods to take for yourself a macguffin, you are prompted to end the game, perhaps returning the macguffin to its rightful place. But if you so choose to backtrack from the end, you can use the maguffin to go back and fight prior, more powerful versions of those gods, the greek, and those before. Culminating in fighting, or perhaps jsut confrounting, some primordial entity, perhaps achieving some apotheosis, perhaps ending all existance, or perhaps killing it for the sake of the mortal world's independance. No gods, not anymore.
+Each turn back changes the overworld, from perhaps a decaying man-wrought temple, to it's hayday, to it's early contruction, to a place that never was, to a place that was but wasn't really.
+
+
+
+Interesting things:
+
+Brutalist non-human world (Blame!, NaissanceE)
+Horrid gods that also embody very good aspects (WH40K Chaos Gods)
+	"Every night you lay awake dreaming of a brighter tomorrow, you risk getting the attention of the Mad God, and the horrors that come with." - Quote on Tzeentch that goes way too hard.
+Temporal meshing shenanigans (Mirage of Dragon)
+Multiple consecutive endings with multiple characters (Mooncrash)
+Games with an ending, a somewhat satisfying ending, but hides untold gameplay beyond. (Noita, Neir Automata)
+Inscyption's Pelt into Cards trading mechanic, take on an item/burden to deliver it for a reward.
+Action thematically influencing things, even if they aren't directly connected (Bloodborne, MyHouse.WAD, Yume Nikki)
+Subtle repitition of space (MyHouse.WAD)
+Contradiction between what appears, and what is being described (eg the mirror in Slay the Princess demo)
+Sets of overlapping dualities (Moon & Ocean, Ocean & Land, Land and Sun, Sun & Moon. But Moon & Land, and Sun and Ocean don't have a relation).
+Multiblock structures that don't resolve into a "finished single entity" but just work as the collection of blocks
+Element variations in spiritual/divine form (eg ghostflame/holyflame/bloodflame) 
+Reverse terraria world, dig up to surface, then have further biomes above the surface (megastructure, floating islands)
+Vertical gameworld, like Wall World or Jump King
+Bullet stumble/stopping power stat
+Loop Hero's cosmic horror/scale
+(Boss) attacks that sync up with the music
+Choices in a game that influince the events leading up to that choice, the effect changes the cause.
+Narrator not being aware of things plainly there (Slay the Princess)
+Game abilities/spells that cost MAXIMUM stamina/mana (not % of resource, it reduces your max)
+Hearth spirits
+Odin/Wodin sacrificing himself to himself for power (Cultist Sim type ritual?)
+Mirror fights
+Bein alone/a loner is inherently dangerous (The Lonely from TMA)
+Grab-bag style loot, where you take from a pool of loot until it is empty, rather than %drops (thus guaranteeing gaining at least 1 of each loot item by the time you've emptied the bag) (maybe with a "reset the bag" mechanic if you get what you want and want to get another)
+Weapon reload as further mechanic (attack, gimmick, buff (Gears of War))
+Non-standard commodities trading (Cultist Sim, Sunless Sea)
+Living spells that cast/are casting themselves
+Game saves that take a few seconds and leave you vulnerable (Alien Isolation) 
+Vermivorous the invincible
+Abilities conditional on states/allies abilities (DD2 Chaplain Vestal heals all allies, but only if anybody is guarding them)
+Defined (possibly non-standard) laws of reality (Elden Ring, Cultist Simulator)
+Dualism/reflections/cosmic balances (between 2+ entities) (Noita, Elden Ring, As Above So Below)
+Celestial bodies as gods (Noita, Elden Ring)
+Fights emotionally effecting units (Omori, Darkest Dungeon, Library of Ruina)
+Darkwood's nights
+Does the Black Moon howl?
+Lanky giants
+Cross class buffs from playing as different subclasses (Patapon 3, Aliens Fireteam Elite)
+Higher level units get given bleaker and bleaker descriptions the stronger they are, described in roundabout ways. E.g. "[...], they can no longer remember their family" "[...], they aren't sure if they're still human" or even using pronouns that depersonalise them, e.g. "this one", "it", "the thing that used to be [name]"
+Library of Ruina's 3 escalating battle themes
+Assassin's creed beam flip and vault mechanics
+Variable win condition, like haggling in Potionomics or (to a lesser extent) Potion Craft
+Post Mantis Lords respect
+Minecraft cave ambience mood meter
+Shotgun King's modifier cards
+Classes built into subclasses (eg vermintide)
+Boss mechanics based on relative power (eg "humiliation attacks" if you're sevearly underprepared)
+Debuffs based on health, especially in hordes (The Last Spell)
+Close your eyes mechanic from Blackout Club
+Facing an ingame enemy as a "meta game" opponant/facing off against a "game master" (Hand of Fate, Inscryption (first act))
+Meta game affected by a game played within it (Stories Untold (The House Abandon), Inscryption (first act))
