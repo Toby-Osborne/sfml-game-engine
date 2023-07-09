@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <vector>
+#include <deque>
 
 #include "SnakeSection.h"
 
@@ -18,7 +19,18 @@ private:
     static const Time TimePerFrame;
 
     vector<SnakeSection> snake;
+
+    int snakeDirection;
+    deque<int> directionQueue;
+    int speed;
+
+    Time timeSinceLastMove;
 public:
+    enum Direction { RIGHT, DOWN, LEFT, UP };
+
+    void addDirection(int newDirection);
+    void update();
+
     Engine();
 
     void input();
