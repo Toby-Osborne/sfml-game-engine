@@ -3,7 +3,7 @@ project(cppgame_test)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(cppgame_test src/main.cpp)
+add_executable(cppgame_test src/main.cpp src/SnakeSection.cpp src/Engine.cpp)
 
 set(SFML_ROOT F:/Programming/CPP/toolchains/SFML-Downloaded)
 
