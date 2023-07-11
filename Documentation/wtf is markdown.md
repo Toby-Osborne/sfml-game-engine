@@ -46,3 +46,8 @@
   - Poisoned -> Rotting Carcass (ala Core Keeper's Larva Hive?)
   - Irradiated -> Cancerous Corpse (ala The End Is Nigh?)
   - 
+### The Nests
+- Rocky
+- Lots of small indents into the wall for bird nests
+- Large nest/cavern to house the biome boss, "Big Mama (wip)"
+- Trying to bypass the biome spawns flocks to attack the player
