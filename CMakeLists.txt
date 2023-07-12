@@ -3,7 +3,7 @@ project(cppgame_test)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(cppgame_test src/main.cpp src/Engine.cpp src/TileMap.cpp)
+add_executable(cppgame_test src/main.cpp src/Engine.cpp src/TileMap.cpp src/Map.cpp include/Map.h)
 
 set(SFML_ROOT F:/Programming/CPP/toolchains/SFML-Downloaded)
 

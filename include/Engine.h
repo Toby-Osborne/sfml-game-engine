@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "TileMap.h"
 #include <SFML/Graphics/RectangleShape.hpp>
+#include "Map.h"
 
 using namespace sf;
 using namespace std;
@@ -14,6 +15,7 @@ private:
     RenderWindow window;
     const unsigned int FPS = 60;
     static const Time TimePerFrame;
+    Map _this_map;
     TileMap map;
     View view1;
 public:

@@ -2,14 +2,14 @@
 
 const sf::Time Engine::TimePerFrame = seconds(1.f/60.f);
 
-Engine::Engine() {
-    resolution = Vector2f(100,100);
+Engine::Engine() : _this_map("test_map") {
+    resolution = Vector2f(1920 , 1080);
     window.create(VideoMode(resolution.x, resolution.y), "Shit Game", Style::Default);
     window.setFramerateLimit(FPS);
 
-    map.load("assets/tileset.png", sf::Vector2u(32, 32), level::level, 16, 8);
+    map.load("assets/tileset.png", sf::Vector2u(32, 32), _this_map.map_data(), _this_map.map_width(), _this_map.map_height());
     view1.setCenter(Vector2f(200.f,200.f));
-    view1.setSize(Vector2f(100.f,100.f));
+    view1.setSize(Vector2f(1920.f,1920.f));
     window.setView(view1);
 }
 
