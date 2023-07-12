@@ -3,7 +3,11 @@ project(cppgame_test)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(cppgame_test src/main.cpp)
+add_executable(cppgame_test src/main.cpp src/Engine.cpp src/TileMap.cpp include/TileMap.h)
+
+set(SFML_STATIC ON)
+
+set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
 
 set(SFML_ROOT F:/Programming/CPP/toolchains/SFML-Downloaded)
 
@@ -31,7 +35,7 @@ file(COPY assets DESTINATION ${CMAKE_BINARY_DIR})
 if(WIN32)
     file(GLOB BINARY_DEP_DLLS "${SFML_BIN_DIR}/*.dll")
     file(COPY ${BINARY_DEP_DLLS} DESTINATION ${CMAKE_BINARY_DIR})
-    file(GLOB MINGW_DEP_DLLS "${MINGW64_BIN_DIR}/*.dll")
-    file(COPY ${MINGW_DEP_DLLS} DESTINATION ${CMAKE_BINARY_DIR})
+#    file(GLOB MINGW_DEP_DLLS "${MINGW64_BIN_DIR}/*.dll")
+#    file(COPY ${MINGW_DEP_DLLS} DESTINATION ${CMAKE_BINARY_DIR})
 endif()
 
