@@ -1,13 +1,12 @@
 #include "TileMap.h"
-#include <math.h>
 void TileMap::update_tile_map_at_pos(sf::Vector2f mouse_world_coords,uint8_t tile_id) {
     uint32_t x_coord = mouse_world_coords.x/32;
     uint32_t y_coord = mouse_world_coords.y/32;
     sf::Vertex* quad = &m_vertices[(x_coord + y_coord * _this_map->map_width()) * 4];
 
     // find its position in the tileset texture
-    int tu = 1 % (m_tileset.getSize().x / 32);
-    int tv = 1 / (m_tileset.getSize().x / 32);
+    int tu = tile_id % (m_tileset.getSize().x / 32);
+    int tv = tile_id / (m_tileset.getSize().x / 32);
 
     // define its 4 texture coordinates
     quad[0].texCoords = sf::Vector2f(tu * 32, tv * 32);
