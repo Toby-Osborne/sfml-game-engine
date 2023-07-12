@@ -20,7 +20,10 @@ private:
     View view1;
 
     sf::Vector2f last_mouse_pos;
+
+    /// For map editor, probably this entire thing needs re-factoring
     bool mouse_was_pressed = false;
+    uint8_t current_block_type = 1;
 public:
     Engine();
 
