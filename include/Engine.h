@@ -1,11 +1,8 @@
-//
-// Created by tobyo on 9/07/2023.
-//
-
 #ifndef CPPGAME_TEST_ENGINE_H
 #define CPPGAME_TEST_ENGINE_H
 
 #include <SFML/Graphics.hpp>
+#include "TileMap.h"
 #include <SFML/Graphics/RectangleShape.hpp>
 
 using namespace sf;
@@ -17,6 +14,8 @@ private:
     RenderWindow window;
     const unsigned int FPS = 60;
     static const Time TimePerFrame;
+    TileMap map;
+    View view1;
 public:
     Engine();
 
