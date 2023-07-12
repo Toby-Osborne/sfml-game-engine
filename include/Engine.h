@@ -15,9 +15,12 @@ private:
     RenderWindow window;
     const unsigned int FPS = 60;
     static const Time TimePerFrame;
-    Map _this_map;
+    shared_ptr<Map> _this_map;
     TileMap map;
     View view1;
+
+    sf::Vector2f last_mouse_pos;
+    bool mouse_was_pressed = false;
 public:
     Engine();
 

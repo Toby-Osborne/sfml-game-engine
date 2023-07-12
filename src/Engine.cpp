@@ -2,14 +2,15 @@
 
 const sf::Time Engine::TimePerFrame = seconds(1.f/60.f);
 
-Engine::Engine() : _this_map("test_map") {
+Engine::Engine() {
     resolution = Vector2f(1920 , 1080);
-    window.create(VideoMode(resolution.x, resolution.y), "Shit Game", Style::Default);
+    window.create(VideoMode(resolution.x, resolution.y), "Walled Garden", Style::Default);
     window.setFramerateLimit(FPS);
 
-    map.load("assets/tileset.png", sf::Vector2u(32, 32), _this_map.map_data(), _this_map.map_width(), _this_map.map_height());
-    view1.setCenter(Vector2f(200.f,200.f));
-    view1.setSize(Vector2f(1920.f,1920.f));
+    _this_map = std::make_shared<Map>("test_map");
+    map.load("assets/tileset.png", sf::Vector2u(32, 32), _this_map);
+    view1.setCenter(Vector2f(320.f,320.f));
+    view1.setSize(Vector2f(1920.f,1080.f));
     window.setView(view1);
 }
 
@@ -41,6 +42,16 @@ void Engine::input() {
         if ((event.type == Event::KeyPressed)&&(Keyboard::isKeyPressed(Keyboard::Escape))) {
             window.close();
         }
+
+        if ((event.type == Event::MouseButtonPressed)&&(Mouse::isButtonPressed(Mouse::Left))) {
+            last_mouse_pos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+            map.update_tile_map_at_pos(last_mouse_pos,1);
+        }
+        if ((event.type == Event::MouseButtonReleased)&&(mouse_was_pressed)) {
+            mouse_was_pressed = false;
+            // do something
+        }
+
     }
     // Definitely improve this
     if (Keyboard::isKeyPressed(Keyboard::W)){
