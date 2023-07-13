@@ -26,7 +26,7 @@
 ### Windtunnel (foreground)
 |Pros|Neutrals|Cons|
 |-----|-----|-----|
-|     |     | Takes up considerable gamespace (a full coloumn)    |
+|     |     | Takes up considerable gamespace (a full column)    |
 |     |     | Could be used to skip sections of the game    |
 |     |     |     |
 |     |     |     |
@@ -49,5 +49,5 @@
 ### The Nests
 - Rocky
 - Lots of small indents into the wall for bird nests
-- Large nest/cavern to house the biome boss, "Big Mama (wip)"
+- Large nest/cavern to house the biome boss, the mama bird
 - Trying to bypass the biome spawns flocks to attack the player
