@@ -1,5 +1,5 @@
 #include "Engine.h"
-#include "TileMap.h"
+#include "MapRender.h"
 
 int main() {
     Engine engine;

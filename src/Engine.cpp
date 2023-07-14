@@ -6,9 +6,9 @@ Engine::Engine() {
     resolution = Vector2f(1920 , 1080);
     window.create(VideoMode(resolution.x, resolution.y), "Walled Garden", Style::Default);
     window.setFramerateLimit(FPS);
-
     _this_map = std::make_shared<Map>("test_map");
-    map.load("assets/tileset.png", sf::Vector2u(32, 32), _this_map);
+    _player = std::make_unique<Player>(_this_map);
+    _render_map = _player->get_map();
     view1.setCenter(Vector2f(320.f,320.f));
     view1.setSize(Vector2f(1920.f,1080.f));
     window.setView(view1);
@@ -26,7 +26,7 @@ void Engine::draw() {
     window.clear(Color::Black);
 
     // Draw the map on screen
-    window.draw(map);
+    window.draw(*_render_map);
     window.display();
 }
 
@@ -45,7 +45,7 @@ void Engine::input() {
 
         if ((event.type == Event::MouseButtonPressed)&&(Mouse::isButtonPressed(Mouse::Left))) {
             last_mouse_pos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-            map.update_tile_map_at_pos(last_mouse_pos,current_block_type);
+//            map.update_tile_map_at_pos(last_mouse_pos,current_block_type);
         }
         if ((event.type == Event::MouseButtonReleased)&&(mouse_was_pressed)) {
             mouse_was_pressed = false;

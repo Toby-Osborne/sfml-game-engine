@@ -2,9 +2,10 @@
 #define CPPGAME_TEST_ENGINE_H
 
 #include <SFML/Graphics.hpp>
-#include "TileMap.h"
+#include "MapRender.h"
 #include <SFML/Graphics/RectangleShape.hpp>
 #include "Map.h"
+#include "Player.h"
 
 using namespace sf;
 using namespace std;
@@ -15,8 +16,9 @@ private:
     RenderWindow window;
     const unsigned int FPS = 60;
     static const Time TimePerFrame;
+    const MapRender *_render_map;
     shared_ptr<Map> _this_map;
-    TileMap map;
+    unique_ptr<Player> _player;
     View view1;
 
     sf::Vector2f last_mouse_pos;
