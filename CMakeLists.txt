@@ -27,6 +27,8 @@ endif()
 
 file(COPY assets DESTINATION ${CMAKE_BINARY_DIR})
 
+file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/saves)
+
 # Copy dlls to build
 if(WIN32)
     file(GLOB BINARY_DEP_DLLS "${SFML_BIN_DIR}/*.dll")

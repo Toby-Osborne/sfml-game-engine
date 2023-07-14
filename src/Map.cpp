@@ -1,24 +1,35 @@
 #include "Map.h"
 #include <fstream>
+#include <sys/stat.h>
+
+inline bool file_exists (const std::string& name) {
+    struct stat buffer;
+    return (stat (name.c_str(), &buffer) == 0);
+}
 
 Map::Map(std::string map_name) {
     this->_map_name = map_name;
     map_name = "saves/"+map_name+".nig";
-    char map_header[8];
-    std::fstream fin(map_name, std::fstream::in);
-    for (uint32_t i = 0;i<8;i++) {
-        fin >> std::noskipws >> map_header[i];
-    }
-    this->_map_width = ((uint32_t*)map_header)[0];
-    this->_map_height = ((uint32_t*)map_header)[1];
-    this->_map_data = new uint8_t[_map_width*_map_height];
-    for (uint32_t i = 0;i<_map_width*_map_height;i++) {
-        fin >> std::noskipws >> _map_data[i];
+
+    if (file_exists(map_name)) {
+        char map_header[8];
+        std::fstream fin(map_name, std::fstream::in);
+        for (uint32_t i = 0;i<8;i++) {
+            fin >> std::noskipws >> map_header[i];
+        }
+        this->_map_width = ((uint32_t*)map_header)[0];
+        this->_map_height = ((uint32_t*)map_header)[1];
+        this->_map_data = new uint8_t[_map_width*_map_height];
+        for (uint32_t i = 0;i<_map_width*_map_height;i++) {
+            fin >> std::noskipws >> _map_data[i];
+        }
+    } else {
+        // Need to make an actual GUI for this
+        make_new(default_map_width,default_map_height);
     }
 }
 
-Map::Map(std::string map_name,uint32_t map_width,uint32_t map_height) {
-    this->_map_name = map_name;
+void Map::make_new(uint32_t map_width,uint32_t map_height) {
     this->_map_width = map_width;
     this->_map_height = map_height;
     this->_map_data = new uint8_t[_map_width*_map_height];
