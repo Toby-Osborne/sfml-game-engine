@@ -13,7 +13,8 @@ public:
     MapRender(std::string tileset, sf::Vector2u tileSize, std::shared_ptr<Map> map);
     bool load(sf::Vector2f camera_coordinates);
 private:
-    static constexpr uint32_t render_box_size_tiles = 9;   // Render a 19x19 box around the player
+    static constexpr uint32_t chunk_width = ((1920U/32U)>>1) + 3;
+    static constexpr uint32_t chunk_height = ((1080U/32U)>>1) + 3;
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     sf::VertexArray m_vertices;

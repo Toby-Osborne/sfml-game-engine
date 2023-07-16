@@ -34,20 +34,20 @@ bool MapRender::load(sf::Vector2f camera_coordinates) {
     if (!m_tileset.loadFromFile(_tileset))
         return false;
 
-    if (render_box_size_tiles > (unsigned int)(camera_coordinates.x/32)) {
+    if (chunk_width > (unsigned int)(camera_coordinates.x/32)) {
         _array_start.x = 0;
     } else {
-        _array_start.x = (camera_coordinates.x/32)-render_box_size_tiles;
+        _array_start.x = (camera_coordinates.x/32)-chunk_width;
     }
 
-    if (render_box_size_tiles > (unsigned int)(camera_coordinates.y/32)) {
+    if (chunk_height > (unsigned int)(camera_coordinates.y/32)) {
         _array_start.y = 0;
     } else {
-        _array_start.y = (camera_coordinates.y/32)-render_box_size_tiles;
+        _array_start.y = (camera_coordinates.y/32)-chunk_height;
     }
 
-    _array_dimensions.x = ((unsigned int)(camera_coordinates.x/32) + render_box_size_tiles - _array_start.x);
-    _array_dimensions.y = ((unsigned int)(camera_coordinates.y/32) + render_box_size_tiles - _array_start.y);
+    _array_dimensions.x = ((unsigned int)(camera_coordinates.x/32) + chunk_width - _array_start.x);
+    _array_dimensions.y = ((unsigned int)(camera_coordinates.y/32) + chunk_height - _array_start.y);
 
     // resize the vertex array to fit the level size
     m_vertices.setPrimitiveType(sf::Quads);

@@ -9,7 +9,7 @@ Engine::Engine() {
     _this_map = std::make_shared<Map>("test_map");
     _player = std::make_unique<Player>(_this_map);
     _render_map = _player->get_map();
-    view1.setCenter(Vector2f(320.f,320.f));
+    view1.setCenter(_player->get_player_coordinates());
     view1.setSize(Vector2f(1920.f,1080.f));
     window.setView(view1);
 }

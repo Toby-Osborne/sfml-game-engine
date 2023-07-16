@@ -6,6 +6,10 @@ Player::Player(std::shared_ptr<Map> map) {
     _render_map->load(_player_coordinates);
 }
 
+const sf::Vector2f Player::get_player_coordinates() {
+    return this->_player_coordinates;
+}
+
 MapRender *Player::get_map() {
     return _render_map.get();
 }

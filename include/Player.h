@@ -13,7 +13,7 @@ public:
 
     void process_player();
 private:
-    sf::Vector2f _player_coordinates = sf::Vector2f(320,320);
+    sf::Vector2f _player_coordinates = sf::Vector2f(1920/2,1080/2);
     std::unique_ptr<MapRender> _render_map;
     std::shared_ptr<Map> _map;
 };
