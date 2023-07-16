@@ -12,6 +12,9 @@ public:
     int map_height() const { return _map_height; }
     uint8_t *map_data() const { return _map_data; }
     void save_map();
+
+    void update_map(unsigned int x, unsigned int y, unsigned int tile_id);
+
     ~Map();
 private:
     std::string _map_name;

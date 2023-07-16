@@ -4,6 +4,12 @@ void MapRender::update_tile_map_at_pos(sf::Vector2f mouse_world_coords, uint8_t 
     uint32_t x_coord = mouse_world_coords.x/32;
     uint32_t y_coord = mouse_world_coords.y/32;
 
+    if (x_coord > _this_map->map_width()||(y_coord > _this_map->map_height())) {
+        return;
+    }
+
+    _this_map->update_map(x_coord,y_coord,tile_id);
+
     sf::Vertex* quad = &m_vertices[(x_coord-_array_start.x + (y_coord-_array_start.y) * (_array_dimensions.x)) * 4];
 
     // find its position in the tileset texture

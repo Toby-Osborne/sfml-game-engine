@@ -52,6 +52,11 @@ void Map::save_map() {
     save_file.write((const char*)_map_data,_map_width*_map_height*sizeof(char));
 }
 
+void Map::update_map(unsigned int x, unsigned int y, unsigned int tile_id) {
+    _map_data[x + y * _map_width] = tile_id;
+}
+
+
 Map::~Map() {
     save_map();
     delete _map_data;
