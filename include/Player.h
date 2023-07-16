@@ -10,6 +10,8 @@ public:
 
     // This is a terrible solution because if player goes out of scope then its over
     MapRender *get_map();
+
+    void process_player();
 private:
     sf::Vector2f _player_coordinates;
     std::unique_ptr<MapRender> _render_map;

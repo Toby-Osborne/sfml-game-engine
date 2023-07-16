@@ -45,7 +45,7 @@ void Engine::input() {
 
         if ((event.type == Event::MouseButtonPressed)&&(Mouse::isButtonPressed(Mouse::Left))) {
             last_mouse_pos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-//            map.update_tile_map_at_pos(last_mouse_pos,current_block_type);
+            _render_map->update_tile_map_at_pos(last_mouse_pos,current_block_type);
         }
         if ((event.type == Event::MouseButtonReleased)&&(mouse_was_pressed)) {
             mouse_was_pressed = false;

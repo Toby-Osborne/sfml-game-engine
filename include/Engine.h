@@ -16,7 +16,7 @@ private:
     RenderWindow window;
     const unsigned int FPS = 60;
     static const Time TimePerFrame;
-    const MapRender *_render_map;
+    MapRender *_render_map;
     shared_ptr<Map> _this_map;
     unique_ptr<Player> _player;
     View view1;
