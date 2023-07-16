@@ -104,3 +104,9 @@
 
 - Rats in a layer obsessed with white liquid
 - Rubber Room with rats
+
+### Barrier at the bottom of the wall
+
+- Get tungsten cube at the top of the wall
+- only dropping this cube has enough pressure to unlock digging down
+- alternative, the world is the monster and drop cube to kill it
