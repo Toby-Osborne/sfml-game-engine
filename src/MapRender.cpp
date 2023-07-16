@@ -1,8 +1,8 @@
 #include "MapRender.h"
 
 void MapRender::update_tile_map_at_pos(sf::Vector2f mouse_world_coords, uint8_t tile_id) {
-    uint32_t x_coord = mouse_world_coords.x/32;
-    uint32_t y_coord = mouse_world_coords.y/32;
+    uint32_t x_coord = (unsigned int )(mouse_world_coords.x/32)+_array_start.x;
+    uint32_t y_coord = (unsigned int )(mouse_world_coords.y/32)+_array_start.y;
 
     if (x_coord > _this_map->map_width()||(y_coord > _this_map->map_height())) {
         return;
