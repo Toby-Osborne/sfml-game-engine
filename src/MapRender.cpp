@@ -58,7 +58,7 @@ bool MapRender::load(sf::Vector2f camera_coordinates) {
         for (unsigned int j = 0; j < _array_dimensions.y; ++j)
         {
             // get the current tile number
-            int tile_id = _this_map->map_data()[_array_start.x + i + j * (_this_map->map_width() + _array_start.y)];
+            int tile_id = _this_map->map_data()[_array_start.x + i + (j+_array_start.y) * (_this_map->map_width())];
 
             // find its position in the tileset texture
             int tu = tile_id % (m_tileset.getSize().x / 32);
