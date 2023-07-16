@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="cppgame_test"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\toolchains\;CMake Files\..\toolchains\SFML-2.6.0\;CMake Files\..\toolchains\SFML-2.6.0\lib\;CMake Files\..\toolchains\SFML-2.6.0\lib\cmake\;CMake Files\..\toolchains\SFML-2.6.0\lib\cmake\SFML\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cppgame_test">
+				<Option output="/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/cppgame_test" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/tazukiswift/Work/Prog/cppgame_test/SFML_INCLUDE_DIR"/>
+					<Add directory="/home/tazukiswift/Work/Prog/cppgame_test/./include"/>
+					<Add directory="/home/tazukiswift/Work/Prog/toolchains/SFML-2.6.0/include"/>
+					<Add directory="/usr/include/c++/12"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/12"/>
+					<Add directory="/usr/include/c++/12/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/12/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 cppgame_test"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cppgame_test/fast">
+				<Option output="/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/cppgame_test" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/tazukiswift/Work/Prog/cppgame_test/SFML_INCLUDE_DIR"/>
+					<Add directory="/home/tazukiswift/Work/Prog/cppgame_test/./include"/>
+					<Add directory="/home/tazukiswift/Work/Prog/toolchains/SFML-2.6.0/include"/>
+					<Add directory="/usr/include/c++/12"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/12"/>
+					<Add directory="/usr/include/c++/12/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/12/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 cppgame_test/fast"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/tazukiswift/Work/Prog/cppgame_test/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/include/Map.h">
+			<Option target="cppgame_test"/>
+		</Unit>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/include/Player.h">
+			<Option target="cppgame_test"/>
+		</Unit>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/src/Engine.cpp">
+			<Option target="cppgame_test"/>
+		</Unit>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/src/Map.cpp">
+			<Option target="cppgame_test"/>
+		</Unit>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/src/MapRender.cpp">
+			<Option target="cppgame_test"/>
+		</Unit>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/src/Player.cpp">
+			<Option target="cppgame_test"/>
+		</Unit>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/src/main.cpp">
+			<Option target="cppgame_test"/>
+		</Unit>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/../toolchains/SFML-2.6.0/lib/cmake/SFML/SFMLConfig.cmake">
+			<Option virtualFolder="CMake Files\..\toolchains\SFML-2.6.0\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/../toolchains/SFML-2.6.0/lib/cmake/SFML/SFMLConfigDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\toolchains\SFML-2.6.0\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/../toolchains/SFML-2.6.0/lib/cmake/SFML/SFMLConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\toolchains\SFML-2.6.0\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/../toolchains/SFML-2.6.0/lib/cmake/SFML/SFMLSharedTargets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\toolchains\SFML-2.6.0\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/../toolchains/SFML-2.6.0/lib/cmake/SFML/SFMLSharedTargets-release.cmake">
+			<Option virtualFolder="CMake Files\..\toolchains\SFML-2.6.0\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/tazukiswift/Work/Prog/cppgame_test/../toolchains/SFML-2.6.0/lib/cmake/SFML/SFMLSharedTargets.cmake">
+			<Option virtualFolder="CMake Files\..\toolchains\SFML-2.6.0\lib\cmake\SFML\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
