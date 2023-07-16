@@ -3,7 +3,8 @@
 void MapRender::update_tile_map_at_pos(sf::Vector2f mouse_world_coords, uint8_t tile_id) {
     uint32_t x_coord = mouse_world_coords.x/32;
     uint32_t y_coord = mouse_world_coords.y/32;
-    sf::Vertex* quad = &m_vertices[(x_coord + y_coord * _this_map->map_width()) * 4];
+
+    sf::Vertex* quad = &m_vertices[(x_coord-_array_start.x + (y_coord-_array_start.y) * (_array_dimensions.x)) * 4];
 
     // find its position in the tileset texture
     int tu = tile_id % (m_tileset.getSize().x / 32);
@@ -27,41 +28,38 @@ bool MapRender::load(sf::Vector2f camera_coordinates) {
     if (!m_tileset.loadFromFile(_tileset))
         return false;
 
-    unsigned int x_tile_start;
-    unsigned int y_tile_start;
-
     if (render_box_size_tiles > (unsigned int)(camera_coordinates.x/32)) {
-        x_tile_start = 0;
+        _array_start.x = 0;
     } else {
-        x_tile_start = (camera_coordinates.x/32)-render_box_size_tiles;
+        _array_start.x = (camera_coordinates.x/32)-render_box_size_tiles;
     }
 
     if (render_box_size_tiles > (unsigned int)(camera_coordinates.y/32)) {
-        y_tile_start = 0;
+        _array_start.y = 0;
     } else {
-        y_tile_start = (camera_coordinates.y/32)-render_box_size_tiles;
+        _array_start.y = (camera_coordinates.y/32)-render_box_size_tiles;
     }
 
-    unsigned int array_width = ((unsigned int)(camera_coordinates.x/32) + render_box_size_tiles - x_tile_start);
-    unsigned int array_height = ((unsigned int)(camera_coordinates.y/32) + render_box_size_tiles - y_tile_start);
+    _array_dimensions.x = ((unsigned int)(camera_coordinates.x/32) + render_box_size_tiles - _array_start.x);
+    _array_dimensions.y = ((unsigned int)(camera_coordinates.y/32) + render_box_size_tiles - _array_start.y);
 
     // resize the vertex array to fit the level size
     m_vertices.setPrimitiveType(sf::Quads);
-    m_vertices.resize(array_width * array_height * 4);
+    m_vertices.resize(_array_dimensions.x * _array_dimensions.y * 4);
 
     // populate the vertex array, with one quad per tile
-    for (unsigned int i = 0; i < array_width; ++i)
-        for (unsigned int j = 0; j < array_height; ++j)
+    for (unsigned int i = 0; i < _array_dimensions.x; ++i)
+        for (unsigned int j = 0; j < _array_dimensions.y; ++j)
         {
             // get the current tile number
-            int tileNumber = _this_map->map_data()[x_tile_start + i + j * (_this_map->map_width() + y_tile_start)];
+            int tile_id = _this_map->map_data()[_array_start.x + i + j * (_this_map->map_width() + _array_start.y)];
 
             // find its position in the tileset texture
-            int tu = tileNumber;
-            int tv = tileNumber;
+            int tu = tile_id % (m_tileset.getSize().x / 32);
+            int tv = tile_id / (m_tileset.getSize().x / 32);
 
             // get a pointer to the current tile's quad
-            sf::Vertex* quad = &m_vertices[(i + j * array_width) * 4];
+            sf::Vertex* quad = &m_vertices[(i + j * _array_dimensions.x) * 4];
 
             // define its 4 corners
             quad[0].position = sf::Vector2f(i * _tileSize.x, j * _tileSize.y);

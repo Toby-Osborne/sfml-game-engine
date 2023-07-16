@@ -20,6 +20,9 @@ private:
     sf::Texture m_tileset;
     std::shared_ptr<Map> _this_map;
 
+    sf::Vector2u _array_start;
+    sf::Vector2u _array_dimensions;
+
     std::string _tileset;
     sf::Vector2u _tileSize;
 
