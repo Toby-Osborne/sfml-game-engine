@@ -22,8 +22,8 @@ private:
     int _map_width;
     int _map_height;
 
-    static constexpr uint32_t default_map_width = 100;
-    static constexpr uint32_t default_map_height = 100;
+    static constexpr uint32_t default_map_width = 10000;
+    static constexpr uint32_t default_map_height = 10000;
 };
 
 

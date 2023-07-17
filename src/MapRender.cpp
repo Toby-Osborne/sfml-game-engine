@@ -1,95 +1,36 @@
 #include "MapRender.h"
 
 void MapRender::update_tile_map_at_pos(sf::Vector2f mouse_world_coords, uint8_t tile_id) {
-    uint32_t x_coord = (unsigned int )(mouse_world_coords.x/32)+_array_start.x;
-    uint32_t y_coord = (unsigned int )(mouse_world_coords.y/32)+_array_start.y;
-
-    if (x_coord > _this_map->map_width()||(y_coord > _this_map->map_height())) {
-        return;
-    }
-
-    _this_map->update_map(x_coord,y_coord,tile_id);
-
-    sf::Vertex* quad = &m_vertices[(x_coord-_array_start.x + (y_coord-_array_start.y) * (_array_dimensions.x)) * 4];
-
-    // find its position in the tileset texture
-    int tu = tile_id % (m_tileset.getSize().x / 32);
-    int tv = tile_id / (m_tileset.getSize().x / 32);
-
-    // define its 4 texture coordinates
-    quad[0].texCoords = sf::Vector2f(tu * 32, tv * 32);
-    quad[1].texCoords = sf::Vector2f((tu + 1) * 32, tv * 32);
-    quad[2].texCoords = sf::Vector2f((tu + 1) * 32, (tv + 1) * 32);
-    quad[3].texCoords = sf::Vector2f(tu * 32, (tv + 1) * 32);
+    int debug = 0;
 }
 
-MapRender::MapRender(const std::string tileset, sf::Vector2u tileSize, std::shared_ptr<Map> map) {
-    _tileset = tileset;
-    _tileSize = tileSize;
-    _this_map = std::move(map);
+unsigned int MapRender::get_chunk_count() {
+    return _chunks.size();
+}
+
+Chunk *MapRender::get_chunk(unsigned int chunk_id) {
+    if (chunk_id > _chunks.size()) {
+        return nullptr;
+    } else {
+        return _chunks[chunk_id].get();
+    }
 }
 
 bool MapRender::load(sf::Vector2f camera_coordinates) {
-    // load the tileset texture
-    if (!m_tileset.loadFromFile(_tileset))
-        return false;
-
-    if (chunk_width > (unsigned int)(camera_coordinates.x/32)) {
-        _array_start.x = 0;
-    } else {
-        _array_start.x = (camera_coordinates.x/32)-chunk_width;
-    }
-
-    if (chunk_height > (unsigned int)(camera_coordinates.y/32)) {
-        _array_start.y = 0;
-    } else {
-        _array_start.y = (camera_coordinates.y/32)-chunk_height;
-    }
-
-    _array_dimensions.x = ((unsigned int)(camera_coordinates.x/32) + chunk_width - _array_start.x);
-    _array_dimensions.y = ((unsigned int)(camera_coordinates.y/32) + chunk_height - _array_start.y);
-
-    // resize the vertex array to fit the level size
-    m_vertices.setPrimitiveType(sf::Quads);
-    m_vertices.resize(_array_dimensions.x * _array_dimensions.y * 4);
-
-    // populate the vertex array, with one quad per tile
-    for (unsigned int i = 0; i < _array_dimensions.x; ++i)
-        for (unsigned int j = 0; j < _array_dimensions.y; ++j)
-        {
-            // get the current tile number
-            int tile_id = _this_map->map_data()[_array_start.x + i + (j+_array_start.y) * (_this_map->map_width())];
-
-            // find its position in the tileset texture
-            int tu = tile_id % (m_tileset.getSize().x / 32);
-            int tv = tile_id / (m_tileset.getSize().x / 32);
-
-            // get a pointer to the current tile's quad
-            sf::Vertex* quad = &m_vertices[(i + j * _array_dimensions.x) * 4];
-
-            // define its 4 corners
-            quad[0].position = sf::Vector2f(i * _tileSize.x, j * _tileSize.y);
-            quad[1].position = sf::Vector2f((i + 1) * _tileSize.x, j * _tileSize.y);
-            quad[2].position = sf::Vector2f((i + 1) * _tileSize.x, (j + 1) * _tileSize.y);
-            quad[3].position = sf::Vector2f(i * _tileSize.x, (j + 1) * _tileSize.y);
-
-            // define its 4 texture coordinates
-            quad[0].texCoords = sf::Vector2f(tu * _tileSize.x, tv * _tileSize.y);
-            quad[1].texCoords = sf::Vector2f((tu + 1) * _tileSize.x, tv * _tileSize.y);
-            quad[2].texCoords = sf::Vector2f((tu + 1) * _tileSize.x, (tv + 1) * _tileSize.y);
-            quad[3].texCoords = sf::Vector2f(tu * _tileSize.x, (tv + 1) * _tileSize.y);
+    sf::Vector2u chunk_origin = Chunk::get_chunk_coordinates_from_mouse_pos(camera_coordinates);
+    for (int i = 0;i<2*_chunk_load_radius-1;i++){
+        for (int j = 0;j<2*_chunk_load_radius-1;j++) {
+            _chunks[i+j*(2*_chunk_load_radius-1)]->load(sf::Vector2u(chunk_origin.x+i-_chunk_load_radius+1,chunk_origin.y+j-_chunk_load_radius+1));
         }
+    }
     return true;
 }
 
-void MapRender::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-    // apply the transform
-    states.transform *= getTransform();
 
-    // apply the tileset texture
-    states.texture = &m_tileset;
-
-    // draw the vertex array
-    target.draw(m_vertices, states);
+MapRender::MapRender(const std::string tileset, sf::Vector2u tileSize, std::shared_ptr<Map> map) {
+    for (int i = 0;i<2*_chunk_load_radius-1;i++){
+        for (int j = 0;j<2*_chunk_load_radius-1;j++) {
+            _chunks[i+j*(2*_chunk_load_radius-1)] = std::make_unique<Chunk>(tileset, tileSize, map);
+        }
+    }
 }
