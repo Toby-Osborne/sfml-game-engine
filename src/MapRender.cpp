@@ -11,10 +11,10 @@ int MapRender::get_chunk_count() {
 }
 
 Chunk *MapRender::get_chunk(sf::Vector2i chunk_id) {
-    if (chunk_id.x*chunk_id.y > _chunks.size()) {
+    if ((chunk_id.x + _array_width>>1)+(chunk_id.y+_array_height>>1)*_array_width > _chunks.size()) {
         return nullptr;
     } else {
-        int index = chunk_id.y+(_array_height>>1) * _array_width + (chunk_id.x+_array_width>>1);
+        int index = (chunk_id.y+_array_height/2) * _array_width + (chunk_id.x+_array_width/2);
         return _chunks[index].get();
     }
 }
