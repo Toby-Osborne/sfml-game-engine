@@ -56,20 +56,20 @@ void Engine::input() {
 
     }
     // Definitely improve this
+    sf::Vector2f movement_input = sf::Vector2f(0.f,0.f);
     if (Keyboard::isKeyPressed(Keyboard::W)){
-        view1.move(0,-1);
-        window.setView(view1);
+        movement_input.y -= 1.f;
     }
     if (Keyboard::isKeyPressed(Keyboard::S)){
-        view1.move(0,1);
-        window.setView(view1);
+        movement_input.y += 1.f;
     }
     if (Keyboard::isKeyPressed(Keyboard::D)){
-        view1.move(1,0);
-        window.setView(view1);
+        movement_input.x += 1.f;
     }
     if (Keyboard::isKeyPressed(Keyboard::A)){
-        view1.move(-1,0);
-        window.setView(view1);
+        movement_input.x -= 1.f;
     }
+    _player->process_player(movement_input);
+    view1.setCenter(_player->get_player_coordinates());
+    window.setView(view1);
 }
