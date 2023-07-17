@@ -1,7 +1,7 @@
 #include "Chunk.h"
 #include "EngineDefines.h"
 sf::Vector2i Chunk::get_chunk_coordinates_from_mouse_pos(sf::Vector2f global_mouse_pos) {
-    sf::Vector2i chunk_coords = sf::Vector2i((unsigned int)global_mouse_pos.x/(CHUNK_SIZE_IN_PIXELS),(unsigned int)global_mouse_pos.y/(CHUNK_SIZE_IN_PIXELS));
+    sf::Vector2i chunk_coords = sf::Vector2i((int)global_mouse_pos.x/(CHUNK_SIZE_IN_PIXELS),(int)global_mouse_pos.y/(CHUNK_SIZE_IN_PIXELS));
     return chunk_coords;
 }
 
@@ -32,10 +32,10 @@ bool Chunk::load(sf::Vector2i chunk_coordinates) {
             sf::Vertex* quad = &m_vertices[(i + j * CHUNK_SIZE_IN_TILES) * 4];
 
             // define its 4 corners
-            quad[0].position = sf::Vector2f((_array_start.x + i) * TILE_SIZE, (_array_start.y + j) * TILE_SIZE);
-            quad[1].position = sf::Vector2f((_array_start.x + i + 1) * TILE_SIZE, (_array_start.y + j) * TILE_SIZE);
-            quad[2].position = sf::Vector2f((_array_start.x + i + 1) * TILE_SIZE, (_array_start.y + j + 1) * TILE_SIZE);
-            quad[3].position = sf::Vector2f((_array_start.x + i) * TILE_SIZE, (_array_start.y + j + 1) * TILE_SIZE);
+            quad[0].position = sf::Vector2f((float)(_array_start.x + i) * TILE_SIZE, (float)(_array_start.y + j) * TILE_SIZE);
+            quad[1].position = sf::Vector2f((float)(_array_start.x + i + 1) * TILE_SIZE, (float)(_array_start.y + j) * TILE_SIZE);
+            quad[2].position = sf::Vector2f((float)(_array_start.x + i + 1) * TILE_SIZE, (float)(_array_start.y + j + 1) * TILE_SIZE);
+            quad[3].position = sf::Vector2f((float)(_array_start.x + i) * TILE_SIZE, (float)(_array_start.y + j + 1) * TILE_SIZE);
 
             // define its 4 texture coordinates
             quad[0].texCoords = sf::Vector2f(tu * TILE_SIZE, tv * TILE_SIZE);
@@ -63,14 +63,14 @@ void Chunk::update_chunk_tile(sf::Vector2f mouse_world_coords,uint8_t tile_id) {
     sf::Vertex* quad = &m_vertices[(x_coord-_array_start.x + (y_coord-_array_start.y) * (CHUNK_SIZE_IN_TILES)) * 4];
 
     // find its position in the tileset texture
-    int tu = tile_id % (m_tileset.getSize().x / TILE_SIZE);
-    int tv = tile_id / (m_tileset.getSize().x / TILE_SIZE);
+    int tu = (int)tile_id % (m_tileset.getSize().x / TILE_SIZE);
+    int tv = (int)tile_id / (m_tileset.getSize().x / TILE_SIZE);
 
     // define its 4 texture coordinates
-    quad[0].texCoords = sf::Vector2f(tu * TILE_SIZE, tv * TILE_SIZE);
-    quad[1].texCoords = sf::Vector2f((tu + 1) * TILE_SIZE, tv * TILE_SIZE);
-    quad[2].texCoords = sf::Vector2f((tu + 1) * TILE_SIZE, (tv + 1) * TILE_SIZE);
-    quad[3].texCoords = sf::Vector2f(tu * TILE_SIZE, (tv + 1) * TILE_SIZE);
+    quad[0].texCoords = sf::Vector2f((float)tu * TILE_SIZE, (float)tv * TILE_SIZE);
+    quad[1].texCoords = sf::Vector2f((float)(tu + 1) * TILE_SIZE, (float)tv * TILE_SIZE);
+    quad[2].texCoords = sf::Vector2f((float)(tu + 1) * TILE_SIZE, (float)(tv + 1) * TILE_SIZE);
+    quad[3].texCoords = sf::Vector2f((float)tu * TILE_SIZE, (float)(tv + 1) * TILE_SIZE);
 }
 
 void Chunk::draw(sf::RenderTarget& target, sf::RenderStates states) const
