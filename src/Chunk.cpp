@@ -1,10 +1,11 @@
 #include "Chunk.h"
 #include "EngineDefines.h"
-sf::Vector2u Chunk::get_chunk_coordinates_from_mouse_pos(sf::Vector2f global_mouse_pos) {
-    return sf::Vector2u((unsigned int)global_mouse_pos.x/(CHUNK_SIZE_IN_PIXELS),(unsigned int)global_mouse_pos.y/(CHUNK_SIZE_IN_PIXELS));
+sf::Vector2i Chunk::get_chunk_coordinates_from_mouse_pos(sf::Vector2f global_mouse_pos) {
+    sf::Vector2i chunk_coords = sf::Vector2i((unsigned int)global_mouse_pos.x/(CHUNK_SIZE_IN_PIXELS),(unsigned int)global_mouse_pos.y/(CHUNK_SIZE_IN_PIXELS));
+    return chunk_coords;
 }
 
-bool Chunk::load(sf::Vector2u chunk_coordinates) {
+bool Chunk::load(sf::Vector2i chunk_coordinates) {
     // load the tileset texture
     if (!m_tileset.loadFromFile(_tileset))
         return false;
@@ -51,26 +52,25 @@ Chunk::Chunk(std::string tileset, sf::Vector2u tileSize, std::shared_ptr<Map> ma
 }
 
 void Chunk::update_chunk_tile(sf::Vector2f mouse_world_coords,uint8_t tile_id) {
-    uint32_t x_coord = (unsigned int )(mouse_world_coords.x/32)+_array_start.x;
-    uint32_t y_coord = (unsigned int )(mouse_world_coords.y/32)+_array_start.y;
+    int x_coord = (int)(mouse_world_coords.x/TILE_SIZE);
+    int y_coord = (int)(mouse_world_coords.y/TILE_SIZE);
 
     if (x_coord > _this_map->map_width()||(y_coord > _this_map->map_height())) {
         return;
     }
 
     _this_map->update_map(x_coord,y_coord,tile_id);
-
-    sf::Vertex* quad = &m_vertices[(x_coord-_array_start.x + (y_coord-_array_start.y) * (_array_dimensions.x)) * 4];
+    sf::Vertex* quad = &m_vertices[(x_coord-_array_start.x + (y_coord-_array_start.y) * (CHUNK_SIZE_IN_TILES)) * 4];
 
     // find its position in the tileset texture
-    int tu = tile_id % (m_tileset.getSize().x / 32);
-    int tv = tile_id / (m_tileset.getSize().x / 32);
+    int tu = tile_id % (m_tileset.getSize().x / TILE_SIZE);
+    int tv = tile_id / (m_tileset.getSize().x / TILE_SIZE);
 
     // define its 4 texture coordinates
-    quad[0].texCoords = sf::Vector2f(tu * 32, tv * 32);
-    quad[1].texCoords = sf::Vector2f((tu + 1) * 32, tv * 32);
-    quad[2].texCoords = sf::Vector2f((tu + 1) * 32, (tv + 1) * 32);
-    quad[3].texCoords = sf::Vector2f(tu * 32, (tv + 1) * 32);
+    quad[0].texCoords = sf::Vector2f(tu * TILE_SIZE, tv * TILE_SIZE);
+    quad[1].texCoords = sf::Vector2f((tu + 1) * TILE_SIZE, tv * TILE_SIZE);
+    quad[2].texCoords = sf::Vector2f((tu + 1) * TILE_SIZE, (tv + 1) * TILE_SIZE);
+    quad[3].texCoords = sf::Vector2f(tu * TILE_SIZE, (tv + 1) * TILE_SIZE);
 }
 
 void Chunk::draw(sf::RenderTarget& target, sf::RenderStates states) const

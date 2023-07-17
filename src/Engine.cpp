@@ -26,7 +26,7 @@ void Engine::draw() {
     window.clear(Color::Black);
 
     // Draw the map on screen
-    for (unsigned int i = 0;i<_render_map->get_chunk_count();i++) {
+    for (int i = 0;i<_render_map->get_chunk_count();i++) {
         window.draw(*(_render_map->get_chunk(i)));
     }
     window.display();
