@@ -3,27 +3,27 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Transformable.hpp>
 #include "Map.h"
 
-class Chunk : public sf::Drawable, public sf::Transformable{
+class Chunk : public sf::Drawable, public sf::Transformable {
 private:
-    sf::VertexArray m_vertices;
+    sf::VertexArray _m_vertices;
+    sf::Vector2i _array_start;
 
-    sf::Texture m_tileset;
-
-    sf::Vector2u _array_start;
-
-    std::string _tileset;
+    sf::Vector2i _chunk_coordinates;
 
     std::shared_ptr<Map> _this_map;
+    sf::Texture _m_tileset;
 
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
+
 public:
-    bool load(sf::Vector2i chunk_coordinates);
-    void update_chunk_tile(sf::Vector2f mouse_world_coords,uint8_t tile_id);
-    Chunk(std::string tileset, sf::Vector2u tileSize, std::shared_ptr<Map> map);
+
     static sf::Vector2i get_chunk_coordinates_from_mouse_pos(sf::Vector2f global_mouse_pos);
+
+    void update_chunk_tile(sf::Vector2f mouse_world_coords, uint8_t tile_id);
+
+    Chunk(sf::Vector2i chunk_location, std::shared_ptr<Map> this_map);
 };
 
 
