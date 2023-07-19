@@ -7,10 +7,9 @@ Engine::Engine() {
     window.create(VideoMode(resolution.x, resolution.y), "Walled Garden", Style::Default);
     window.setFramerateLimit(FPS);
     _this_map = std::make_unique<Map>("test_map");
-    _player = std::make_unique<Player>(_this_map.get());
+    _player = std::make_unique<Player>(_this_map.get(), sf::Vector2f(2000, 2000));
 
-    _chunk_handler = _player->get_chunk_handler();
-
+    _chunk_handler = std::make_unique<ChunkHandler>(_this_map.get(), _player->get_player_coordinates());
     view1.setCenter(_player->get_player_coordinates());
     view1.setSize(Vector2f(1920.f, 1080.f));
     window.setView(view1);
@@ -52,7 +51,6 @@ void Engine::input() {
             mouse_was_pressed = false;
             // do something
         }
-
     }
     // Definitely improve this
     sf::Vector2f movement_input = sf::Vector2f(0.f, 0.f);
@@ -69,6 +67,7 @@ void Engine::input() {
         movement_input.x -= 1.f;
     }
     _player->process_player(movement_input);
+    _chunk_handler->update_chunks(_player->get_player_coordinates());
     view1.setCenter(_player->get_player_coordinates());
     window.setView(view1);
 }

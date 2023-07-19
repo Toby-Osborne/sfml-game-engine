@@ -16,12 +16,13 @@ private:
     RenderWindow window;
     const unsigned int FPS = 60;
     static const Time TimePerFrame;
-    ChunkHandler *_chunk_handler;
     unique_ptr<Map> _this_map;
     unique_ptr<Player> _player;
     View view1;
 
     sf::Vector2f last_mouse_pos;
+
+    unique_ptr<ChunkHandler> _chunk_handler;
 
     /// For map editor, probably this entire thing needs re-factoring
     bool mouse_was_pressed = false;

@@ -2,25 +2,26 @@
 #define CPPGAME_TEST_PLAYER_H
 
 #include <SFML/Graphics.hpp>
-#include <ChunkHandler.h>
+#include "ChunkHandler.h"
+#include "Entity.h"
 
-class Player {
+class Player : public Entity {
 public:
-    sf::Vector2f get_player_coordinates();
+    [[nodiscard]] const sf::Vector2f &get_player_coordinates() const {
+        return Entity::get_entity_coordinates();
+    }
 
-    explicit Player(Map *map);  // Map loaded on launch
+    void set_player_coordinates(const sf::Vector2f &entityCoordinates) {
+        Entity::set_entity_coordinates(entityCoordinates);
+    }
 
-    // This is a terrible solution because if player goes out of scope then its over
-    ChunkHandler *get_chunk_handler();
+    Player(Map *map, sf::Vector2f spawn_pos);  // Map loaded on launch
 
     void process_player(const sf::Vector2f &movement_input);
 
 private:
-    sf::Vector2f _player_coordinates = sf::Vector2f(2000, 2000);
-    std::unique_ptr<ChunkHandler> _chunk_handler;
     Map *_map;
     sf::Clock _player_clock;
-
 
     // Scuffed Physics implementation?
     float mass = 1.0;
@@ -31,6 +32,8 @@ private:
     static constexpr int vel_stop_threshold = 100.0;
 
     void _handle_player_physics(const sf::Vector2f &movement_input);
+
+    static constexpr Entity::hitbox default_player_hitbox = {0.f, 0.f, 0.f, 0.f};
 };
 
 
