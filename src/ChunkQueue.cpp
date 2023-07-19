@@ -81,3 +81,17 @@ bool ChunkQueue::step(ChunkQueue::SIDE side) {
 const int ChunkQueue::get_render_distance() {
     return _render_distance;
 }
+
+void ChunkQueue::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+    // apply the transform
+//    states.transform *= getTransform();
+
+    // apply the tileset texture
+    states.texture = &_m_tileset;
+
+    for (int i = 0;i<_render_distance;i++) {
+        for (int j = 0;j<_render_distance;j++) {
+            target.draw(*(_chunk_array[i][j]->get_vertices()), states);
+        }
+    }
+}

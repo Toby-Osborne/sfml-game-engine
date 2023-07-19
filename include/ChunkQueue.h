@@ -6,7 +6,7 @@
 #include <array>
 #include "EngineDefines.h"
 
-class ChunkQueue {
+class ChunkQueue : public sf::Drawable{
 
 private:
     sf::Vector2i _chunk_zero;
@@ -33,6 +33,8 @@ public:
     bool step(ChunkQueue::SIDE side);
 
     Chunk *get_chunk(sf::Vector2i chunk_coordinates);
+
+    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 };
 
 

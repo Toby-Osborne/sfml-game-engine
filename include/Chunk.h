@@ -6,7 +6,7 @@
 #include "Map.h"
 #include "EngineDefines.h"
 
-class Chunk : public sf::Drawable {
+class Chunk {
 private:
     sf::VertexArray _m_vertices;
     sf::Vector2i _array_start;
@@ -16,9 +16,8 @@ private:
     std::shared_ptr<Map> _this_map;
     sf::Texture *_m_tileset;
 
-    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
-
 public:
+    sf::VertexArray *get_vertices();
 
     static sf::Vector2i get_chunk_coordinates_from_mouse_pos(sf::Vector2f global_mouse_pos);
 

@@ -52,6 +52,10 @@ Chunk::Chunk(sf::Vector2i chunk_location, std::shared_ptr<Map> this_map, sf::Tex
     }
 }
 
+sf::VertexArray *Chunk::get_vertices() {
+    return &_m_vertices;
+}
+
 void Chunk::update_chunk_tile(sf::Vector2f mouse_world_coords, uint8_t tile_id) {
     int x_coord = (int) (mouse_world_coords.x / TILE_SIZE);
     int y_coord = (int) (mouse_world_coords.y / TILE_SIZE);
@@ -73,15 +77,4 @@ void Chunk::update_chunk_tile(sf::Vector2f mouse_world_coords, uint8_t tile_id) 
     quad[1].texCoords = sf::Vector2f((float) (tu + 1) * TILE_SIZE, (float) tv * TILE_SIZE);
     quad[2].texCoords = sf::Vector2f((float) (tu + 1) * TILE_SIZE, (float) (tv + 1) * TILE_SIZE);
     quad[3].texCoords = sf::Vector2f((float) tu * TILE_SIZE, (float) (tv + 1) * TILE_SIZE);
-}
-
-void Chunk::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-    // apply the transform
-//    states.transform *= getTransform();
-
-    // apply the tileset texture
-    states.texture = _m_tileset;
-
-    // draw the vertex array
-    target.draw(_m_vertices, states);
 }

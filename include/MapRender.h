@@ -23,6 +23,8 @@ public:
 
     int get_num_chunks();
 
+    ChunkQueue *get_queue();
+
 private:
     int _render_distance;
     int _num_chunks;

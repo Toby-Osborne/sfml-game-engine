@@ -12,7 +12,11 @@ const sf::Vector2f Player::get_player_coordinates() {
 }
 
 
-MapRender *Player::get_map() {
+ChunkQueue *Player::get_queue() {
+    return _render_map->get_queue();
+}
+
+MapRender *Player::get_render_map() {
     return _render_map.get();
 }
 

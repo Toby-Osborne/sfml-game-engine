@@ -25,6 +25,10 @@ MapRender::MapRender(std::shared_ptr<Map> map, sf::Vector2f player_coordinates) 
     _num_chunks = _render_distance * _render_distance;
 }
 
+ChunkQueue *MapRender::get_queue() {
+    return _chunks.get();
+}
+
 void MapRender::update_chunks(sf::Vector2f player_world_coords) {
     sf::Vector2i player_chunk = Chunk::get_chunk_coordinates_from_mouse_pos(player_world_coords);
     switch (player_chunk.x - _chunk_origin_center.x) {

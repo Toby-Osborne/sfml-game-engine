@@ -8,7 +8,10 @@ Engine::Engine() {
     window.setFramerateLimit(FPS);
     _this_map = std::make_shared<Map>("test_map");
     _player = std::make_unique<Player>(_this_map);
-    _render_map = _player->get_map();
+
+    _render_map = _player->get_render_map();
+    _chunk_queue = _player->get_queue();
+
     view1.setCenter(_player->get_player_coordinates());
     view1.setSize(Vector2f(1920.f, 1080.f));
     window.setView(view1);
@@ -25,12 +28,7 @@ void Engine::run() {
 void Engine::draw() {
     window.clear(Color::Black);
     // Draw the map on screen
-    for (int i = 0; i < 5; i++) {   // Fix magic number
-        for (int j = 0; j < 5; j++) {
-            Chunk *chunk = _render_map->get_chunk(sf::Vector2i(j, i));
-            window.draw(*(chunk));
-        }
-    }
+    window.draw(*_chunk_queue);
     window.display();
 }
 

@@ -11,7 +11,8 @@ public:
     explicit Player(std::shared_ptr<Map> map);  // Map loaded on launch
 
     // This is a terrible solution because if player goes out of scope then its over
-    MapRender *get_map();
+    ChunkQueue *get_queue();
+    MapRender *get_render_map();
 
     void process_player(const sf::Vector2f &movement_input);
 
