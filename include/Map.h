@@ -6,16 +6,22 @@
 
 class Map {
 public:
-    Map(std::string map_name);
-    void make_new(uint32_t map_width,uint32_t map_height);
-    int map_width() const { return _map_width; }
-    int map_height() const { return _map_height; }
-    uint8_t *map_data() const { return _map_data; }
+    explicit Map(std::string map_name);
+
+    void make_new(uint32_t map_width, uint32_t map_height);
+
+    [[nodiscard]] int map_width() const { return _map_width; }
+
+    [[nodiscard]] int map_height() const { return _map_height; }
+
+    [[nodiscard]] uint8_t *map_data() const { return _map_data; }
+
     void save_map();
 
     void update_map(unsigned int x, unsigned int y, unsigned int tile_id);
 
     ~Map();
+
 private:
     std::string _map_name;
     uint8_t *_map_data;

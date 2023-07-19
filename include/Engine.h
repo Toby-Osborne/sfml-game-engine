@@ -12,12 +12,12 @@ using namespace std;
 
 class Engine {
 private:
-    Vector2f resolution;
+    Vector2u resolution;
     RenderWindow window;
     const unsigned int FPS = 60;
     static const Time TimePerFrame;
-    ChunkHandler *_render_map;
-    shared_ptr<Map> _this_map;
+    ChunkHandler *_chunk_handler;
+    unique_ptr<Map> _this_map;
     unique_ptr<Player> _player;
     View view1;
 

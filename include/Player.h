@@ -6,19 +6,19 @@
 
 class Player {
 public:
-    const sf::Vector2f get_player_coordinates();
+    sf::Vector2f get_player_coordinates();
 
-    explicit Player(std::shared_ptr<Map> map);  // Map loaded on launch
+    explicit Player(Map *map);  // Map loaded on launch
 
     // This is a terrible solution because if player goes out of scope then its over
-    ChunkHandler *get_render_map();
+    ChunkHandler *get_chunk_handler();
 
     void process_player(const sf::Vector2f &movement_input);
 
 private:
     sf::Vector2f _player_coordinates = sf::Vector2f(2000, 2000);
-    std::unique_ptr<ChunkHandler> _render_map;
-    std::shared_ptr<Map> _map;
+    std::unique_ptr<ChunkHandler> _chunk_handler;
+    Map *_map;
     sf::Clock _player_clock;
 
 

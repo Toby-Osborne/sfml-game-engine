@@ -1,17 +1,17 @@
 #include "Player.h"
 
-Player::Player(std::shared_ptr<Map> map) {
+Player::Player(Map *map) {
     _map = map;
-    _render_map = std::make_unique<ChunkHandler>(_map.get(), _player_coordinates);
+    _chunk_handler = std::make_unique<ChunkHandler>(_map, _player_coordinates);
     _player_clock.restart();
 }
 
-const sf::Vector2f Player::get_player_coordinates() {
+sf::Vector2f Player::get_player_coordinates() {
     return this->_player_coordinates;
 }
 
-ChunkHandler *Player::get_render_map() {
-    return _render_map.get();
+ChunkHandler *Player::get_chunk_handler() {
+    return _chunk_handler.get();
 }
 
 inline static constexpr float sign(float val) { return val < 0 ? -1.0 : 1.0; }
@@ -51,5 +51,5 @@ void Player::_handle_player_physics(const sf::Vector2f &movement_input) {
 
 void Player::process_player(const sf::Vector2f &movement_input) {
     _handle_player_physics(movement_input);
-    _render_map->update_chunks(_player_coordinates);
+    _chunk_handler->update_chunks(_player_coordinates);
 }

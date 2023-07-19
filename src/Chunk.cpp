@@ -1,6 +1,4 @@
 #include "Chunk.h"
-#include "EngineDefines.h"
-#include <string>
 
 sf::Vector2i Chunk::get_chunk_coordinates_from_mouse_pos(sf::Vector2f global_mouse_pos) {
     sf::Vector2i chunk_coords = sf::Vector2i((int) global_mouse_pos.x / (CHUNK_SIZE_IN_PIXELS),
@@ -12,7 +10,7 @@ sf::Vector2i Chunk::get_chunk_coordinates_from_mouse_pos(sf::Vector2f global_mou
 Chunk::Chunk(sf::Vector2i chunk_location, Map *this_map, sf::Texture *tileset) {
     _this_map = this_map;
     _m_tileset = tileset;
-    _chunk_coordinates = std::move(chunk_location);
+    _chunk_coordinates = chunk_location;
     _array_start.x = _chunk_coordinates.x * CHUNK_SIZE_IN_TILES;
     _array_start.y = _chunk_coordinates.y * CHUNK_SIZE_IN_TILES;
 
@@ -69,8 +67,8 @@ void Chunk::update_chunk_tile(sf::Vector2f mouse_world_coords, uint8_t tile_id) 
                                     4];
 
     // find its position in the tileset texture
-    int tu = (int) tile_id % (_m_tileset->getSize().x / TILE_SIZE);
-    int tv = (int) tile_id / (_m_tileset->getSize().x / TILE_SIZE);
+    int tu = tile_id % (_m_tileset->getSize().x / TILE_SIZE);
+    int tv = tile_id / (_m_tileset->getSize().x / TILE_SIZE);
 
     // define its 4 texture coordinates
     quad[0].texCoords = sf::Vector2f((float) tu * TILE_SIZE, (float) tv * TILE_SIZE);

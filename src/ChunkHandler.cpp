@@ -78,7 +78,7 @@ void ChunkHandler::update_chunks(sf::Vector2f player_world_coords) {
             // reload chunks
             return;
     }
-};
+}
 
 bool ChunkHandler::step(SIDE side) {
     switch (side) {

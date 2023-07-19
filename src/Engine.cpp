@@ -3,13 +3,13 @@
 const sf::Time Engine::TimePerFrame = seconds(1.f / 60.f);
 
 Engine::Engine() {
-    resolution = Vector2f(1920, 1080);
+    resolution = Vector2u(1920, 1080);
     window.create(VideoMode(resolution.x, resolution.y), "Walled Garden", Style::Default);
     window.setFramerateLimit(FPS);
-    _this_map = std::make_shared<Map>("test_map");
-    _player = std::make_unique<Player>(_this_map);
+    _this_map = std::make_unique<Map>("test_map");
+    _player = std::make_unique<Player>(_this_map.get());
 
-    _render_map = _player->get_render_map();
+    _chunk_handler = _player->get_chunk_handler();
 
     view1.setCenter(_player->get_player_coordinates());
     view1.setSize(Vector2f(1920.f, 1080.f));
@@ -27,7 +27,7 @@ void Engine::run() {
 void Engine::draw() {
     window.clear(Color::Black);
     // Draw the map on screen
-    window.draw(*_render_map);
+    window.draw(*_chunk_handler);
     window.display();
 }
 
@@ -46,7 +46,7 @@ void Engine::input() {
 
         if ((event.type == Event::MouseButtonPressed) && (Mouse::isButtonPressed(Mouse::Left))) {
             last_mouse_pos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-            _render_map->update_tile_map_at_pos(last_mouse_pos, current_block_type);
+            _chunk_handler->update_tile_map_at_pos(last_mouse_pos, current_block_type);
         }
         if ((event.type == Event::MouseButtonReleased) && (mouse_was_pressed)) {
             mouse_was_pressed = false;

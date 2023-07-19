@@ -14,12 +14,10 @@ public:
 
     Chunk *get_chunk(sf::Vector2i chunk);
 
-    void load(sf::Vector2f camera_coordinates);
-
     void update_chunks(sf::Vector2f player_world_coords);
 
     ChunkHandler(Map *map, sf::Vector2f player_coordinates);
-    
+
     enum SIDE {
         X_LEFT,
         X_RIGHT,
@@ -29,7 +27,7 @@ public:
 
     bool step(SIDE side);
 
-    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
+    void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
 private:
     sf::Vector2i _chunk_origin_center;
