@@ -4,8 +4,9 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "Map.h"
+#include "EngineDefines.h"
 
-class Chunk : public sf::Drawable, public sf::Transformable {
+class Chunk : public sf::Drawable {
 private:
     sf::VertexArray _m_vertices;
     sf::Vector2i _array_start;

@@ -77,7 +77,7 @@ void Chunk::update_chunk_tile(sf::Vector2f mouse_world_coords, uint8_t tile_id) 
 
 void Chunk::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     // apply the transform
-    states.transform *= getTransform();
+//    states.transform *= getTransform();
 
     // apply the tileset texture
     states.texture = _m_tileset;
