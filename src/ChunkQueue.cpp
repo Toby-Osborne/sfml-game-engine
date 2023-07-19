@@ -48,12 +48,12 @@ void ChunkQueue::step(ChunkQueue::SIDE side) {
         case SIDE::X_RIGHT: // add to x axis
         {
             if (_chunk_zero.x + _render_distance >= _map->map_width() / CHUNK_SIZE_IN_TILES) return;
+            _chunk_zero.x++;
             for (int j = 0; j < _render_distance; j++) {
                 _chunk_array[(_chunk_zero.y + j) % _render_distance][(_chunk_zero.x + _render_distance - 1) %
                                                                      _render_distance] = _create_chunk(
                         sf::Vector2i(_chunk_zero.x + _render_distance - 1, _chunk_zero.y + j));
             }
-            _chunk_zero.x++;
         }
             break;
         case SIDE::Y_BOTTOM:    // Add to y axis
