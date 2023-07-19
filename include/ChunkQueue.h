@@ -30,7 +30,7 @@ public:
         Y_TOP
     };
 
-    void step(ChunkQueue::SIDE side);
+    bool step(ChunkQueue::SIDE side);
 
     Chunk *get_chunk(sf::Vector2i chunk_coordinates);
 };

@@ -29,12 +29,14 @@ void MapRender::update_chunks(sf::Vector2f player_world_coords) {
     sf::Vector2i player_chunk = Chunk::get_chunk_coordinates_from_mouse_pos(player_world_coords);
     switch (player_chunk.x - _chunk_origin_center.x) {
         case 1:
-            _chunks->step(ChunkQueue::SIDE::X_RIGHT);
-            _chunk_origin_center.x++;
+            if (_chunks->step(ChunkQueue::SIDE::X_RIGHT)) {
+                _chunk_origin_center.x++;
+            }
             return;
         case -1:
-            _chunks->step(ChunkQueue::SIDE::X_LEFT);
-            _chunk_origin_center.x--;
+            if (_chunks->step(ChunkQueue::SIDE::X_LEFT)) {
+                _chunk_origin_center.x--;
+            }
             return;
         case 0:
             break;
@@ -44,12 +46,14 @@ void MapRender::update_chunks(sf::Vector2f player_world_coords) {
     }
     switch (player_chunk.y - _chunk_origin_center.y) {
         case 1:
-            _chunks->step(ChunkQueue::SIDE::Y_BOTTOM);
-            _chunk_origin_center.y++;
+            if (_chunks->step(ChunkQueue::SIDE::Y_BOTTOM)) {
+                _chunk_origin_center.y++;
+            }
             return;
         case -1:
-            _chunks->step(ChunkQueue::SIDE::Y_TOP);
-            _chunk_origin_center.y--;
+            if (_chunks->step(ChunkQueue::SIDE::Y_TOP)) {
+                _chunk_origin_center.y--;
+            }
             return;
         case 0:
             break;

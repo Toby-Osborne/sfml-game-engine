@@ -32,11 +32,11 @@ std::unique_ptr<Chunk> ChunkQueue::_create_chunk(sf::Vector2i chunk_coordinates)
     return std::move(std::make_unique<Chunk>(chunk_coordinates, _map, &_m_tileset));
 }
 
-void ChunkQueue::step(ChunkQueue::SIDE side) {
+bool ChunkQueue::step(ChunkQueue::SIDE side) {
     switch (side) {
         case SIDE::X_LEFT:  // add to negative x-axis
         {
-            if (_chunk_zero.x - 1 < 0) return;
+            if (_chunk_zero.x - 1 < 0) return false;
             _chunk_zero.x--;
             for (int j = 0; j < _render_distance; j++) {
                 _chunk_array[(_chunk_zero.y + j) % _render_distance][_chunk_zero.x %
@@ -47,7 +47,7 @@ void ChunkQueue::step(ChunkQueue::SIDE side) {
             break;
         case SIDE::X_RIGHT: // add to x axis
         {
-            if (_chunk_zero.x + _render_distance >= _map->map_width() / CHUNK_SIZE_IN_TILES) return;
+            if (_chunk_zero.x + _render_distance >= _map->map_width() / CHUNK_SIZE_IN_TILES) return false;
             _chunk_zero.x++;
             for (int j = 0; j < _render_distance; j++) {
                 _chunk_array[(_chunk_zero.y + j) % _render_distance][(_chunk_zero.x + _render_distance - 1) %
@@ -57,7 +57,7 @@ void ChunkQueue::step(ChunkQueue::SIDE side) {
         }
             break;
         case SIDE::Y_BOTTOM:    // Add to y axis
-            if (_chunk_zero.y + _render_distance >= _map->map_height() / CHUNK_SIZE_IN_TILES) return;
+            if (_chunk_zero.y + _render_distance >= _map->map_height() / CHUNK_SIZE_IN_TILES) return false;
             _chunk_zero.y++;
             for (int i = 0; i < _render_distance; i++) {
                 _chunk_array[(_chunk_zero.y + _render_distance - 1) % _render_distance][(_chunk_zero.x + i) %
@@ -66,7 +66,7 @@ void ChunkQueue::step(ChunkQueue::SIDE side) {
             }
             break;
         case SIDE::Y_TOP:
-            if (_chunk_zero.y - 1 < 0) return;
+            if (_chunk_zero.y - 1 < 0) return false;
             _chunk_zero.y--;
             for (int i = 0; i < _render_distance; i++) {
                 _chunk_array[_chunk_zero.y % _render_distance][(_chunk_zero.x + i) %
@@ -75,6 +75,7 @@ void ChunkQueue::step(ChunkQueue::SIDE side) {
             }
             break;
     }
+    return true;
 }
 
 const int ChunkQueue::get_render_distance() {
