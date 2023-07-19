@@ -11,14 +11,15 @@ class ChunkQueue {
 private:
     sf::Vector2i _chunk_zero;
     std::shared_ptr<Map> _map;
-    static constexpr int _render_distance = 7;
+    static constexpr int _render_distance = 5;
 
+    sf::Texture _m_tileset;
     std::unique_ptr<Chunk> _chunk_array[_render_distance][_render_distance];
+
+    std::unique_ptr<Chunk> _create_chunk(sf::Vector2i chunk_coordinates);
 
 public:
     ChunkQueue(sf::Vector2i global_chunk_coordinates, std::shared_ptr<Map> map);
-
-    Chunk *get_local_chunk(sf::Vector2i chunk);
 
     static const int get_render_distance();
 
@@ -32,8 +33,6 @@ public:
     void step(ChunkQueue::SIDE side);
 
     Chunk *get_chunk(sf::Vector2i chunk_coordinates);
-
-    Chunk *get_first_chunk();   // For Rendering
 };
 
 

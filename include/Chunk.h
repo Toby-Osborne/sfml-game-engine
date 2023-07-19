@@ -13,7 +13,7 @@ private:
     sf::Vector2i _chunk_coordinates;
 
     std::shared_ptr<Map> _this_map;
-    sf::Texture _m_tileset;
+    sf::Texture *_m_tileset;
 
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
@@ -23,7 +23,7 @@ public:
 
     void update_chunk_tile(sf::Vector2f mouse_world_coords, uint8_t tile_id);
 
-    Chunk(sf::Vector2i chunk_location, std::shared_ptr<Map> this_map);
+    Chunk(sf::Vector2i chunk_location, std::shared_ptr<Map> this_map, sf::Texture *tileset);
 };
 
 

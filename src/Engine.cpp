@@ -25,8 +25,8 @@ void Engine::run() {
 void Engine::draw() {
     window.clear(Color::Black);
     // Draw the map on screen
-    for (int i = 0; i < 7; i++) {   // Fix magic number
-        for (int j = 0; j < 7; j++) {
+    for (int i = 0; i < 5; i++) {   // Fix magic number
+        for (int j = 0; j < 5; j++) {
             Chunk *chunk = _render_map->get_chunk(sf::Vector2i(j, i));
             window.draw(*(chunk));
         }
