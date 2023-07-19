@@ -2,7 +2,7 @@
 #define CPPGAME_TEST_PLAYER_H
 
 #include <SFML/Graphics.hpp>
-#include <MapRender.h>
+#include <ChunkHandler.h>
 
 class Player {
 public:
@@ -11,14 +11,13 @@ public:
     explicit Player(std::shared_ptr<Map> map);  // Map loaded on launch
 
     // This is a terrible solution because if player goes out of scope then its over
-    ChunkQueue *get_queue();
-    MapRender *get_render_map();
+    ChunkHandler *get_render_map();
 
     void process_player(const sf::Vector2f &movement_input);
 
 private:
     sf::Vector2f _player_coordinates = sf::Vector2f(2000, 2000);
-    std::unique_ptr<MapRender> _render_map;
+    std::unique_ptr<ChunkHandler> _render_map;
     std::shared_ptr<Map> _map;
     sf::Clock _player_clock;
 

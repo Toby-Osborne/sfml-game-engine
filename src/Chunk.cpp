@@ -9,7 +9,7 @@ sf::Vector2i Chunk::get_chunk_coordinates_from_mouse_pos(sf::Vector2f global_mou
 }
 
 
-Chunk::Chunk(sf::Vector2i chunk_location, std::shared_ptr<Map> this_map, sf::Texture *tileset) {
+Chunk::Chunk(sf::Vector2i chunk_location, Map *this_map, sf::Texture *tileset) {
     _this_map = this_map;
     _m_tileset = tileset;
     _chunk_coordinates = std::move(chunk_location);

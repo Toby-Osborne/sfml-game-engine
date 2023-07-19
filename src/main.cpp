@@ -1,5 +1,5 @@
 #include "Engine.h"
-#include "MapRender.h"
+#include "ChunkHandler.h"
 
 int main() {
     Engine engine;

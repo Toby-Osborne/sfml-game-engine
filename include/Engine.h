@@ -2,7 +2,7 @@
 #define CPPGAME_TEST_ENGINE_H
 
 #include <SFML/Graphics.hpp>
-#include "MapRender.h"
+#include "ChunkHandler.h"
 #include <SFML/Graphics/RectangleShape.hpp>
 #include "Map.h"
 #include "Player.h"
@@ -16,8 +16,7 @@ private:
     RenderWindow window;
     const unsigned int FPS = 60;
     static const Time TimePerFrame;
-    ChunkQueue *_chunk_queue;
-    MapRender *_render_map;
+    ChunkHandler *_render_map;
     shared_ptr<Map> _this_map;
     unique_ptr<Player> _player;
     View view1;

@@ -10,7 +10,6 @@ Engine::Engine() {
     _player = std::make_unique<Player>(_this_map);
 
     _render_map = _player->get_render_map();
-    _chunk_queue = _player->get_queue();
 
     view1.setCenter(_player->get_player_coordinates());
     view1.setSize(Vector2f(1920.f, 1080.f));
@@ -28,7 +27,7 @@ void Engine::run() {
 void Engine::draw() {
     window.clear(Color::Black);
     // Draw the map on screen
-    window.draw(*_chunk_queue);
+    window.draw(*_render_map);
     window.display();
 }
 

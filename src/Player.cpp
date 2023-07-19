@@ -2,8 +2,7 @@
 
 Player::Player(std::shared_ptr<Map> map) {
     _map = map;
-    _render_map = std::make_unique<MapRender>(_map, _player_coordinates);
-    _render_map->load(_player_coordinates);
+    _render_map = std::make_unique<ChunkHandler>(_map.get(), _player_coordinates);
     _player_clock.restart();
 }
 
@@ -11,12 +10,7 @@ const sf::Vector2f Player::get_player_coordinates() {
     return this->_player_coordinates;
 }
 
-
-ChunkQueue *Player::get_queue() {
-    return _render_map->get_queue();
-}
-
-MapRender *Player::get_render_map() {
+ChunkHandler *Player::get_render_map() {
     return _render_map.get();
 }
 

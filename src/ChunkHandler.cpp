@@ -1,8 +1,17 @@
-#include "ChunkQueue.h"
+#include "ChunkHandler.h"
 
-#include <utility>
+void ChunkHandler::update_tile_map_at_pos(sf::Vector2f mouse_world_coords, uint8_t tile_id) {
+    sf::Vector2i global_chunk_id =
+            Chunk::get_chunk_coordinates_from_mouse_pos(mouse_world_coords);
+    Chunk *chunk_to_change = get_chunk(global_chunk_id);
+    chunk_to_change->update_chunk_tile(mouse_world_coords, tile_id);
+}
 
-ChunkQueue::ChunkQueue(sf::Vector2i global_chunk_coordinates, std::shared_ptr<Map> map) {
+ChunkHandler::ChunkHandler(Map *map, sf::Vector2f player_coordinates) {
+    sf::Vector2i global_chunk_coordinates = Chunk::get_chunk_coordinates_from_mouse_pos(player_coordinates);
+    _map = map;
+    _chunk_origin_center = Chunk::get_chunk_coordinates_from_mouse_pos(player_coordinates);
+
     _map = map;
     _m_tileset.loadFromFile(TILESET);
     int i_start = global_chunk_coordinates.x - _render_distance / 2;
@@ -22,17 +31,56 @@ ChunkQueue::ChunkQueue(sf::Vector2i global_chunk_coordinates, std::shared_ptr<Ma
     }
 }
 
-Chunk *ChunkQueue::get_chunk(sf::Vector2i chunk_coordinates) {
+Chunk *ChunkHandler::get_chunk(sf::Vector2i chunk_coordinates) {
     // add check here?
     Chunk *chunk = _chunk_array[chunk_coordinates.y % _render_distance][chunk_coordinates.x % _render_distance].get();
     return chunk;
 }
 
-std::unique_ptr<Chunk> ChunkQueue::_create_chunk(sf::Vector2i chunk_coordinates) {
+
+std::unique_ptr<Chunk> ChunkHandler::_create_chunk(sf::Vector2i chunk_coordinates) {
     return std::move(std::make_unique<Chunk>(chunk_coordinates, _map, &_m_tileset));
 }
 
-bool ChunkQueue::step(ChunkQueue::SIDE side) {
+void ChunkHandler::update_chunks(sf::Vector2f player_world_coords) {
+    sf::Vector2i player_chunk = Chunk::get_chunk_coordinates_from_mouse_pos(player_world_coords);
+    switch (player_chunk.x - _chunk_origin_center.x) {
+        case 1:
+            if (step(SIDE::X_RIGHT)) {
+                _chunk_origin_center.x++;
+            }
+            return;
+        case -1:
+            if (step(SIDE::X_LEFT)) {
+                _chunk_origin_center.x--;
+            }
+            return;
+        case 0:
+            break;
+        default:
+            // reload chunks
+            return;
+    }
+    switch (player_chunk.y - _chunk_origin_center.y) {
+        case 1:
+            if (step(SIDE::Y_BOTTOM)) {
+                _chunk_origin_center.y++;
+            }
+            return;
+        case -1:
+            if (step(SIDE::Y_TOP)) {
+                _chunk_origin_center.y--;
+            }
+            return;
+        case 0:
+            break;
+        default:
+            // reload chunks
+            return;
+    }
+};
+
+bool ChunkHandler::step(SIDE side) {
     switch (side) {
         case SIDE::X_LEFT:  // add to negative x-axis
         {
@@ -78,20 +126,13 @@ bool ChunkQueue::step(ChunkQueue::SIDE side) {
     return true;
 }
 
-const int ChunkQueue::get_render_distance() {
-    return _render_distance;
-}
-
-void ChunkQueue::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-    // apply the transform
-//    states.transform *= getTransform();
-
+void ChunkHandler::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     // apply the tileset texture
     states.texture = &_m_tileset;
 
-    for (int i = 0;i<_render_distance;i++) {
-        for (int j = 0;j<_render_distance;j++) {
-            target.draw(*(_chunk_array[i][j]->get_vertices()), states);
+    for (const auto &i: _chunk_array) {
+        for (const auto &j: i) {
+            target.draw(*(j->get_vertices()), states);
         }
     }
 }
