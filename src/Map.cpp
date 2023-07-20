@@ -1,4 +1,5 @@
 #include "Map.h"
+#include "EngineDefines.h"
 #include <fstream>
 #include <sys/stat.h>
 
@@ -25,7 +26,7 @@ Map::Map(std::string map_name) {
         }
     } else {
         // Need to make an actual GUI for this
-        make_new(default_map_width, default_map_height);
+        make_new(1000 * 16, 500 * 16);
     }
 }
 

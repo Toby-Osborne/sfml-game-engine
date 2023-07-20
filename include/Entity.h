@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Map.h"
+#include "EngineDefines.h"
 
 class Entity {
     // This is the class that exists as not-tiles
@@ -27,14 +28,23 @@ public:
     }
 
     // TODO: Implement collision physics
-    bool check_map_collision() { return false; };
+    bool is_colliding_x_pos();
+
+    bool is_colliding_y_pos();
+
+    bool is_colliding_x_neg();
+
+    bool is_colliding_y_neg();
 
     Entity(Map *map, hitbox entity_hitbox, sf::Vector2f spawn_pos);
 
 private:
     sf::Vector2f _entity_coordinates;
+    sf::Vector2i _entity_tile_coordinates;
     hitbox _this_hitbox{};
     Map *_map;
+
+    static bool _tile_is_passable(uint8_t tile_id);
 
     // Should all entities have physics?
 };

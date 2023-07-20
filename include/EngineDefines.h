@@ -7,4 +7,7 @@
 
 #define TILESET "assets/tileset.png"
 
+#define MAP_WIDTH_IN_CHUNKS 1000
+#define MAP_HEIGHT_IN_CHUNKS 500
+
 #endif //CPPGAME_TEST_ENGINEDEFINES_H

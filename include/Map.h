@@ -3,6 +3,7 @@
 
 #include <string>
 #include <memory>
+#include "EngineDefines.h"
 
 class Map {
 public:
@@ -28,8 +29,8 @@ private:
     int _map_width;
     int _map_height;
 
-    static constexpr uint32_t default_map_width = 10000;
-    static constexpr uint32_t default_map_height = 10000;
+    static const uint32_t default_map_width = MAP_WIDTH_IN_CHUNKS * CHUNK_SIZE_IN_TILES;
+    static const uint32_t default_map_height = MAP_HEIGHT_IN_CHUNKS * CHUNK_SIZE_IN_TILES;
 };
 
 

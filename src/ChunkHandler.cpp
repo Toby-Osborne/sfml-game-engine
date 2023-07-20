@@ -39,6 +39,10 @@ Chunk *ChunkHandler::get_chunk(sf::Vector2i chunk_coordinates) {
 
 
 std::unique_ptr<Chunk> ChunkHandler::_create_chunk(sf::Vector2i chunk_coordinates) {
+    if ((chunk_coordinates.x < 0) || (chunk_coordinates.y < 0) || (chunk_coordinates.x > 1000) ||
+        (chunk_coordinates.y > 500)) {
+        return nullptr;
+    }
     return std::move(std::make_unique<Chunk>(chunk_coordinates, _map, &_m_tileset));
 }
 
@@ -132,7 +136,9 @@ void ChunkHandler::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
     for (const auto &i: _chunk_array) {
         for (const auto &j: i) {
-            target.draw(*(j->get_vertices()), states);
+            if (j != nullptr) {
+                target.draw(*(j->get_vertices()), states);
+            }
         }
     }
 }
