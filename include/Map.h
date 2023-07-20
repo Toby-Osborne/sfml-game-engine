@@ -21,6 +21,8 @@ public:
 
     void update_map(unsigned int x, unsigned int y, unsigned int tile_id);
 
+    uint8_t get_tile(unsigned int x, unsigned int y);
+
     ~Map();
 
 private:

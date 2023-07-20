@@ -33,7 +33,7 @@ private:
 
     void _handle_player_physics(const sf::Vector2f &movement_input);
 
-    static constexpr Entity::hitbox default_player_hitbox = {0.f, 0.f, 0.f, 0.f};
+    static constexpr Entity::hitbox default_player_hitbox = {16.f, 16.f, 16.f, 16.f};
 };
 
 

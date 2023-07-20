@@ -28,21 +28,18 @@ public:
     }
 
     // TODO: Implement collision physics
-    bool is_colliding_x_pos();
+    bool will_collide_x(float dx);
 
-    bool is_colliding_y_pos();
-
-    bool is_colliding_x_neg();
-
-    bool is_colliding_y_neg();
+    bool will_collide_y(float dy);
 
     Entity(Map *map, hitbox entity_hitbox, sf::Vector2f spawn_pos);
 
 private:
     sf::Vector2f _entity_coordinates;
-    sf::Vector2i _entity_tile_coordinates;
     hitbox _this_hitbox{};
     Map *_map;
+
+    bool _is_point_colliding(int x, int y);
 
     static bool _tile_is_passable(uint8_t tile_id);
 

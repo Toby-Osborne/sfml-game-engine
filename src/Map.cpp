@@ -57,6 +57,10 @@ void Map::update_map(unsigned int x, unsigned int y, unsigned int tile_id) {
     _map_data[x + y * _map_width] = tile_id;
 }
 
+uint8_t Map::get_tile(unsigned int x, unsigned int y) {
+    return _map_data[x + y * _map_width];
+}
+
 
 Map::~Map() {
     save_map();
