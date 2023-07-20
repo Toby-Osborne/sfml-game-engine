@@ -18,11 +18,10 @@ private:
     static const Time TimePerFrame;
     unique_ptr<Map> _this_map;
     unique_ptr<Player> _player;
+    unique_ptr<ChunkHandler> _chunk_handler;
     View view1;
 
     sf::Vector2f last_mouse_pos;
-
-    unique_ptr<ChunkHandler> _chunk_handler;
 
     /// For map editor, probably this entire thing needs re-factoring
     bool mouse_was_pressed = false;

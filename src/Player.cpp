@@ -56,3 +56,16 @@ void Player::process_player(const sf::Vector2f &movement_input) {
     _handle_player_physics(movement_input);
 
 }
+
+void Player::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+    // apply the tileset texture
+//    states.texture = &_m_tileset;
+
+//    for (const auto &i: _chunk_array) {
+//        for (const auto &j: i) {
+//            if (j != nullptr) {
+//                target.draw(*(j->get_vertices()), states);
+//            }
+//        }
+//    }
+}

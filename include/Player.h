@@ -5,7 +5,7 @@
 #include "ChunkHandler.h"
 #include "Entity.h"
 
-class Player : public Entity {
+class Player : public Entity, public sf::Drawable {
 public:
     [[nodiscard]] const sf::Vector2f &get_player_coordinates() const {
         return Entity::get_entity_coordinates();
@@ -18,6 +18,8 @@ public:
     Player(Map *map, sf::Vector2f spawn_pos);  // Map loaded on launch
 
     void process_player(const sf::Vector2f &movement_input);
+
+    void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
 private:
     Map *_map;
