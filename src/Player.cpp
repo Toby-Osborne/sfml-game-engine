@@ -55,10 +55,16 @@ void Player::_handle_player_physics(const sf::Vector2f &movement_input) {
     Entity::set_entity_coordinates(_player_coordinates);
 }
 
-void Player::process_player(const sf::Vector2f &movement_input) {
-    _handle_player_physics(movement_input);
 
+void Player::process_entity() {
+    _handle_player_physics(_joystick);
 }
+
+
+void Player::process_player_input(const sf::Vector2f &joystick) {
+    _joystick = joystick;
+}
+
 
 void Player::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     // apply the tileset texture

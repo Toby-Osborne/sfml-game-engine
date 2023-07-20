@@ -66,7 +66,10 @@ void Engine::input() {
     if (Keyboard::isKeyPressed(Keyboard::A)) {
         movement_input.x -= 1.f;
     }
-    _player->process_player(movement_input);
+    _player->process_player_input(movement_input);
+
+    // TODO: Once other entities implemented, iterate over vector (?)
+    _player->process_entity();
     _chunk_handler->update_chunks(_player->get_player_coordinates());
     view1.setCenter(_player->get_player_coordinates());
     window.setView(view1);

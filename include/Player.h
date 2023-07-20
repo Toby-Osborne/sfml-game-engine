@@ -17,7 +17,9 @@ public:
 
     Player(Map *map, sf::Vector2f spawn_pos);  // Map loaded on launch
 
-    void process_player(const sf::Vector2f &movement_input);
+    void process_entity() override;
+
+    void process_player_input(const sf::Vector2f &joystick);
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
@@ -32,6 +34,8 @@ private:
     float max_velocity = 1000;
     sf::Vector2f velocity = sf::Vector2f(0.f, 0.f);
     static constexpr int vel_stop_threshold = 100.0;
+
+    sf::Vector2f _joystick = sf::Vector2f(0, 0);
 
     void _handle_player_physics(const sf::Vector2f &movement_input);
 

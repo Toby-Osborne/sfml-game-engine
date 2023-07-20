@@ -34,10 +34,15 @@ public:
 
     Entity(Map *map, hitbox entity_hitbox, sf::Vector2f spawn_pos);
 
+    virtual void process_entity() = 0;
+
 private:
     sf::Vector2f _entity_coordinates;
     hitbox _this_hitbox{};
     Map *_map;
+
+    int _entity_id;
+    static sf::VertexArray *_entity_quads;
 
     bool _is_point_colliding(int x, int y);
 
