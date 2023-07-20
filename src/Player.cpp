@@ -37,11 +37,14 @@ void Player::_handle_player_physics(const sf::Vector2f &movement_input) {
         }
     }
 
+    // Handle Collisions
+
     if (will_collide_x(velocity.x * dt)) {
         velocity.x = 0;
     } else {
         _player_coordinates.x += velocity.x * dt;
     }
+
 
     if (will_collide_y(velocity.y * dt)) {
         velocity.y = 0;
