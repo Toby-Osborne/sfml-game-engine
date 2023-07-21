@@ -5,14 +5,13 @@ Player::Player(Map *map, sf::Vector2f spawn_pos) : Entity::Entity(map, default_p
     _player_clock.restart();
 }
 
-inline static constexpr float sign(float val) { return val < 0 ? -1.0 : 1.0; }
-
 void Player::_handle_player_physics(const sf::Vector2f &movement_input) {
 
     sf::Vector2f _player_coordinates = Entity::get_entity_coordinates();
 
     float dt = (float) (_player_clock.restart().asSeconds());
     // Handle X input
+
     if (movement_input.x == 0) {
         if ((velocity.x < vel_stop_threshold) && (velocity.x > -vel_stop_threshold)) {
             velocity.x = 0.f;
@@ -25,8 +24,9 @@ void Player::_handle_player_physics(const sf::Vector2f &movement_input) {
         }
     }
     // Handle Y input
-    if ((velocity.y == 0) && (movement_input.y < 0.f)) {
+    if ((velocity.y == 0) && ((movement_input.y < 0.f) && !jumped)) {
         velocity.y -= jump_velocity;    // Essentially adds energy to velocity
+        jumped = true;
     } else {
         velocity.y += gravity * dt;
     }
@@ -41,9 +41,10 @@ void Player::_handle_player_physics(const sf::Vector2f &movement_input) {
 
 
     if (will_collide_y(velocity.y * dt * TILE_SIZE)) {
+        if (velocity.y * dt > 0) jumped = false;    // If hitting the ground
         velocity.y = 0;
     } else {
-        _player_coordinates.y += velocity.y * dt * (float) TILE_SIZE;
+        _player_coordinates.y += velocity.y * dt * TILE_SIZE;
     }
 
     Entity::set_entity_coordinates(_player_coordinates);

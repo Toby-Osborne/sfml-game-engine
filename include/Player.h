@@ -25,12 +25,14 @@ private:
 
     // Scuffed Physics implementation?
     // This all is in tiles per second
-    float mass = 1.0;
+    float mass = 1.0;   // Mass controls how difficult it is for the player to move themselves
     float gravity = 9.81;
     float inverse_mass = 1.f / mass;
     float acceleration_coefficient = 10.f * gravity; // "g's"
 
-    float max_velocity = 32.f;  // Tiles per second
+    bool jumped = false;
+
+    float max_velocity = 20.f;  // Tiles per second
     float jump_velocity = 16.f; // Tiles per second
     sf::Vector2f velocity = sf::Vector2f(0.f, 0.f);
     static constexpr float vel_stop_threshold = 10.f; // automatic stop velocity
@@ -39,6 +41,7 @@ private:
 
     void _handle_player_physics(const sf::Vector2f &movement_input);
 
+    // Hitboxes are measured as a square from player origin
     static constexpr Entity::hitbox default_player_hitbox = {16.f, 16.f, 16.f, 16.f};
 };
 
