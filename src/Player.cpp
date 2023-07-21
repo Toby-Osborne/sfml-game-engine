@@ -62,14 +62,5 @@ void Player::process_player_input(const sf::Vector2f &joystick) {
 
 
 void Player::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-    // apply the tileset texture
-//    states.texture = &_m_tileset;
-
-//    for (const auto &i: _chunk_array) {
-//        for (const auto &j: i) {
-//            if (j != nullptr) {
-//                target.draw(*(j->get_vertices()), states);
-//            }
-//        }
-//    }
+    
 }

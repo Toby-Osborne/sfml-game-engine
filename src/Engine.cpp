@@ -6,10 +6,20 @@ Engine::Engine() {
     resolution = Vector2u(1920, 1080);
     window.create(VideoMode(resolution.x, resolution.y), "Walled Garden", Style::Default);
     window.setFramerateLimit(FPS);
-    _this_map = std::make_unique<Map>("test_map");
-    _player = std::make_unique<Player>(_this_map.get(), sf::Vector2f(2000, 2000));
 
+    // Create Map
+    _this_map = std::make_unique<Map>("test_map");
+
+    // Set up entities
+    // TODO: Make an entity handler at some point
+    _entity_tile_map.loadFromFile("Rattew.bmp");
+    
+
+    // Set up player and their chunk handler
+    _player = std::make_unique<Player>(_this_map.get(), sf::Vector2f(2000, 2000));
     _chunk_handler = std::make_unique<ChunkHandler>(_this_map.get(), _player->get_player_coordinates());
+
+    // Configure View
     view1.setCenter(_player->get_player_coordinates());
     view1.setSize(Vector2f(1920.f, 1080.f));
     window.setView(view1);

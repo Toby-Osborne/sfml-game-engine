@@ -19,6 +19,9 @@ private:
     unique_ptr<Map> _this_map;
     unique_ptr<Player> _player;
     unique_ptr<ChunkHandler> _chunk_handler;
+
+    sf::Texture _entity_tile_map;
+    
     View view1;
 
     sf::Vector2f last_mouse_pos;

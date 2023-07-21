@@ -5,7 +5,7 @@
 #include "Map.h"
 #include "EngineDefines.h"
 
-class Entity {
+class Entity : public sf::Drawable {
     // This is the class that exists as not-tiles
     // Therefore needs to implement everything that isn't a tile in this class?
     // Everything should have a hitbox maybe?  Probably should be hidden away
@@ -22,6 +22,11 @@ public:
     [[nodiscard]] const sf::Vector2f &get_entity_coordinates() const {
         return _entity_coordinates;
     }
+
+    sf::Texture *_entity_texture_map;
+    
+
+    void draw(sf::RenderTarget &target, sf::RenderStates states);
 
     void set_entity_coordinates(const sf::Vector2f &entityCoordinates) {
         _entity_coordinates = entityCoordinates;

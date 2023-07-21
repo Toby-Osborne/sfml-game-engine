@@ -5,7 +5,7 @@
 #include "ChunkHandler.h"
 #include "Entity.h"
 
-class Player : public Entity, public sf::Drawable {
+class Player : public Entity {
 public:
     [[nodiscard]] const sf::Vector2f &get_player_coordinates() const {
         return Entity::get_entity_coordinates();
