@@ -11,10 +11,6 @@ public:
         return Entity::get_entity_coordinates();
     }
 
-    void set_player_coordinates(const sf::Vector2f &entityCoordinates) {
-        Entity::set_entity_coordinates(entityCoordinates);
-    }
-
     Player(Map *map, sf::Vector2f spawn_pos);  // Map loaded on launch
 
     void process_entity() override;
@@ -28,12 +24,16 @@ private:
     sf::Clock _player_clock;
 
     // Scuffed Physics implementation?
+    // This all is in tiles per second
     float mass = 1.0;
-    float inverse_mass = 1 / mass;
-    float acceleration_coefficient = 3000.0;
-    float max_velocity = 1000;
+    float gravity = 9.81;
+    float inverse_mass = 1.f / mass;
+    float acceleration_coefficient = 10.f * gravity; // "g's"
+
+    float max_velocity = 32.f;  // Tiles per second
+    float jump_velocity = 16.f; // Tiles per second
     sf::Vector2f velocity = sf::Vector2f(0.f, 0.f);
-    static constexpr int vel_stop_threshold = 100.0;
+    static constexpr float vel_stop_threshold = 10.f; // automatic stop velocity
 
     sf::Vector2f _joystick = sf::Vector2f(0, 0);
 

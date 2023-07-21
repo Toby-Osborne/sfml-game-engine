@@ -13,11 +13,11 @@ void Player::_handle_player_physics(const sf::Vector2f &movement_input) {
 
     float dt = (float) (_player_clock.restart().asSeconds());
     // Handle X input
-    if ((((velocity.x > 1.0) || (velocity.x < -1.0)) && (sign(velocity.x) != sign(movement_input.x))) ||
-        (movement_input.x == 0)) {
-        velocity.x *= 0.9;
+    if (movement_input.x == 0) {
         if ((velocity.x < vel_stop_threshold) && (velocity.x > -vel_stop_threshold)) {
             velocity.x = 0.f;
+        } else {
+            velocity.x *= 0.9;
         }
     } else {
         if ((velocity.x < max_velocity) && (velocity.x > -max_velocity)) {
@@ -25,31 +25,25 @@ void Player::_handle_player_physics(const sf::Vector2f &movement_input) {
         }
     }
     // Handle Y input
-    if ((((velocity.y > 1.0) || (velocity.y < -1.0)) && (sign(velocity.y) != sign(movement_input.y))) ||
-        (movement_input.y == 0)) {
-        velocity.y *= 0.9;
-        if ((velocity.y < vel_stop_threshold) && (velocity.y > -vel_stop_threshold)) {
-            velocity.y = 0.f;
-        }
+    if ((velocity.y == 0) && (movement_input.y < 0.f)) {
+        velocity.y -= jump_velocity;    // Essentially adds energy to velocity
     } else {
-        if ((velocity.y < max_velocity) && (velocity.y > -max_velocity)) {
-            velocity.y += acceleration_coefficient * (movement_input.y) * dt * inverse_mass;
-        }
+        velocity.y += gravity * dt;
     }
 
     // Handle Collisions
 
-    if (will_collide_x(velocity.x * dt)) {
+    if (will_collide_x(velocity.x * dt * TILE_SIZE)) {
         velocity.x = 0;
     } else {
-        _player_coordinates.x += velocity.x * dt;
+        _player_coordinates.x += velocity.x * dt * TILE_SIZE;
     }
 
 
-    if (will_collide_y(velocity.y * dt)) {
+    if (will_collide_y(velocity.y * dt * TILE_SIZE)) {
         velocity.y = 0;
     } else {
-        _player_coordinates.y += velocity.y * dt;
+        _player_coordinates.y += velocity.y * dt * (float) TILE_SIZE;
     }
 
     Entity::set_entity_coordinates(_player_coordinates);
