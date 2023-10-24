@@ -6,15 +6,6 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(cppgame_test src/main.cpp src/Engine.cpp src/ChunkHandler.cpp src/Map.cpp include/Map.h src/Player.cpp include/Player.h src/Chunk.cpp include/Chunk.h include/EngineDefines.h)
 
 #set(SFML_ROOT F:/Programming/CPP/toolchains/SFML-Downloaded)
-set(SFML_ROOT /home/tazukiswift/Work/Prog/toolchains/SFML-2.6.0)
-
-set(MINGW64_BIN_DIR C:/msys64/mingw64/bin)
-
-set(SFML_BIN_DIR ${SFML_ROOT}/bin)
-
-set(SFML_INCLUDE_DIR ${SFML_ROOT}/include)
-
-set(SFML_DIR "${SFML_ROOT}/lib/cmake/SFML")
 
 include_directories(SFML_INCLUDE_DIR ./include)
 
